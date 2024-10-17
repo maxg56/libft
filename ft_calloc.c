@@ -6,7 +6,7 @@
 /*   By: mgendrot <mgendrot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/15 15:22:08 by mgendrot          #+#    #+#             */
-/*   Updated: 2024/10/16 11:18:10 by mgendrot         ###   ########.fr       */
+/*   Updated: 2024/10/17 15:56:05 by mgendrot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	*ft_calloc(size_t count, size_t size )
 		return (0);
 	if (count * size > INT_MAX)
 		return (0);
-	ptr = (void*)malloc(count * size);
+	ptr = (void *)malloc(count * size);
 	if (!ptr)
 		return (NULL);
 	ft_bzero(ptr, count);

@@ -6,7 +6,7 @@
 /*   By: mgendrot <mgendrot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/15 11:35:14 by mgendrot          #+#    #+#             */
-/*   Updated: 2024/10/16 10:21:51 by mgendrot         ###   ########.fr       */
+/*   Updated: 2024/10/17 16:17:12 by mgendrot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ char	*ft_strrchr(const char *s, int c)
 	while (i >= 0)
 	{
 		if (s[i] == (char)c)
-			return ((char*)s + i);
+			return ((char *)s + i);
 		i--;
 	}
 	return (NULL);

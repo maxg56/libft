@@ -6,7 +6,7 @@
 /*   By: mgendrot <mgendrot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/15 10:46:46 by mgendrot          #+#    #+#             */
-/*   Updated: 2024/10/17 11:08:04 by mgendrot         ###   ########.fr       */
+/*   Updated: 2024/10/17 16:11:37 by mgendrot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	ft_touper(unsigned char car)
 {
-	if ((  car >= 'a' && car <= 'z'))
+	if (car >= 'a' && car <= 'z')
 		return (car - 32);
 	else
 		return (car);

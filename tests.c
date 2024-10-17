@@ -6,7 +6,7 @@
 /*   By: mgendrot <mgendrot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 12:24:04 by mgendrot          #+#    #+#             */
-/*   Updated: 2024/10/17 12:56:39 by mgendrot         ###   ########.fr       */
+/*   Updated: 2024/10/17 16:39:43 by mgendrot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -167,7 +167,7 @@ void test_ft_strlcpy(void) {
     printf("Testing ft_strlcpy: %s (length: %zu)\n", dest, len); // Devrait imprimer "Hello"
 }
 
-void test_ft_strtrim(void)
+void    test_ft_strtrim(void)
 {
     char *p;
 
@@ -196,7 +196,7 @@ void test_ft_itoa(void)
     printf("\"   42abc\": %s\n", ft_itoa(INT_MIN));
 }
 
-static char	change_case(unsigned int i, char c) 
+static char	change_case(unsigned int i, char c)
 {
 	if (i % 2 == 0)
 		return (c);

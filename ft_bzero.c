@@ -6,7 +6,7 @@
 /*   By: mgendrot <mgendrot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/15 09:03:04 by mgendrot          #+#    #+#             */
-/*   Updated: 2024/10/16 11:58:22 by mgendrot         ###   ########.fr       */
+/*   Updated: 2024/10/17 15:54:23 by mgendrot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	ft_bzero(void *b, size_t n)
 {
 	unsigned char	*ptr;
 
-	ptr = (unsigned char*)b;
+	ptr = (unsigned char *)b;
 	while (n-- > 0)
 		*(ptr++) = 0;
 }

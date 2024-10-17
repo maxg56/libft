@@ -6,13 +6,13 @@
 /*   By: mgendrot <mgendrot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 11:52:50 by mgendrot          #+#    #+#             */
-/*   Updated: 2024/10/17 12:03:52 by mgendrot         ###   ########.fr       */
+/*   Updated: 2024/10/17 16:16:29 by mgendrot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void ft_putstr_fd(char *s,int fd)
+void	ft_putstr_fd(char *s, int fd)
 {
 	int		i;
 

@@ -6,7 +6,7 @@
 /*   By: mgendrot <mgendrot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 10:01:48 by mgendrot          #+#    #+#             */
-/*   Updated: 2024/10/17 10:26:07 by mgendrot         ###   ########.fr       */
+/*   Updated: 2024/10/17 15:56:59 by mgendrot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ static int	get_num_len(int n)
 
 	len = 0;
 	if (n <= 0)
-		len = 1; 
+		len = 1 ;
 	while (n)
 	{
 		n /= 10;

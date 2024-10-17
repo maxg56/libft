@@ -6,7 +6,7 @@
 /*   By: mgendrot <mgendrot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/16 14:33:26 by mgendrot          #+#    #+#             */
-/*   Updated: 2024/10/16 15:51:10 by mgendrot         ###   ########.fr       */
+/*   Updated: 2024/10/17 16:36:12 by mgendrot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 static int	count_words(const char *str, char c)
 {
-	int i;
-	int trigger;
+	int	i;
+	int	trigger;
 
 	i = 0;
 	trigger = 0;
@@ -53,8 +53,9 @@ char	**ft_split(char const *s, char c)
 	int		index;
 	char	**split;
 
-	if (!s || !(split = malloc((count_words(s, c) + 1) * sizeof(char *))))
-		return (0);
+	split = malloc((count_words(s, c) + 1) * sizeof(char *));
+	if (!s || split == NULL)
+		return (NULL);
 	i = 0;
 	j = 0;
 	index = -1;
