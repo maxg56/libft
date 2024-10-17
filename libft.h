@@ -6,7 +6,7 @@
 /*   By: mgendrot <mgendrot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 11:33:25 by mgendrot          #+#    #+#             */
-/*   Updated: 2024/10/17 12:21:59 by mgendrot         ###   ########.fr       */
+/*   Updated: 2024/10/17 18:20:38 by mgendrot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,10 @@
 # include <limits.h>
 # include <unistd.h>
 
-int		ft_isalpha(unsigned char car);
-int		ft_isdigit(unsigned char car );
-int		ft_isascii( unsigned char car );
-int		ft_isprint( unsigned char car );
+int		ft_isalpha(int car);
+int		ft_isdigit(int car );
+int		ft_isprint(int car );
+int		ft_isascii(int car );
 size_t	ft_strlen(const char *str);
 int		ft_atoi(const char *str);
 void	ft_bzero(void *b, size_t n);
