@@ -1,43 +1,54 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strtrim.c                                       :+:      :+:    :+:   */
+/*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mgendrot <mgendrot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/16 14:11:29 by mgendrot          #+#    #+#             */
-/*   Updated: 2024/10/17 09:46:36 by mgendrot         ###   ########.fr       */
+/*   Created: 2024/10/17 10:01:48 by mgendrot          #+#    #+#             */
+/*   Updated: 2024/10/17 10:26:07 by mgendrot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int	ft_setinset(char c ,const char *set)
+static int	get_num_len(int n)
 {
-	while (*set)
+	int	len ;
+
+	len = 0;
+	if (n <= 0)
+		len = 1; 
+	while (n)
 	{
-		if (c == *set)
-			return (1);
-		set++;
+		n /= 10;
+		len++;
 	}
-	return (0);
+	return (len);
 }
 
-char	*ft_strtrim(char const *s1, char const *set)
+char	*ft_itoa(int n)
 {
-	size_t	min;
-	size_t	max;
-	size_t	len;
+	char			*str;
+	int				len;
+	unsigned int	num;
 
-	if (!s1)
+	len = get_num_len(n);
+	str = (char *)malloc(sizeof(char) * (len + 1));
+	if (!str)
 		return (NULL);
-	min = 0;
-	while (s1[min] && ft_setinset(s1[min],set))
-		min++;
-	max = ft_strlen(s1);
-	while (min < max && ft_setinset(s1[max - 1],set))
-		max--;
-	len = max - min;
-	return (ft_substr(s1, min, len));
+	str[len] = '\0';
+	if (n < 0)
+	{
+		num = -n;
+		str[0] = '-';
+	}
+	else
+		num = n ;
+	while (len-- && (n >= 0 || len))
+	{
+		str[len] = (num % 10) + '0';
+		num /= 10;
+	}
+	return (str);
 }
-

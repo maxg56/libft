@@ -1,22 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isalpha.c                                       :+:      :+:    :+:   */
+/*   ft_putchar_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mgendrot <mgendrot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/14 11:20:23 by mgendrot          #+#    #+#             */
-/*   Updated: 2024/10/17 12:30:11 by mgendrot         ###   ########.fr       */
+/*   Created: 2024/10/17 11:48:23 by mgendrot          #+#    #+#             */
+/*   Updated: 2024/10/17 12:01:39 by mgendrot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_isalpha(unsigned char car)
+void	ft_putchar_fd(char c, int fd)
 {
-	if (car < 'A' || car > 'z')
-		return (0);
-	if (car > 'Z' && car < 'a')
-		return (0);
-	return (1);
+	write(fd, &c, 1);
 }
