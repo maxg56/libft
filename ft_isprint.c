@@ -6,13 +6,13 @@
 /*   By: mgendrot <mgendrot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/15 08:40:24 by mgendrot          #+#    #+#             */
-/*   Updated: 2024/10/15 14:06:38 by mgendrot         ###   ########.fr       */
+/*   Updated: 2024/10/17 17:52:37 by mgendrot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h" 
 
-int	ft_isprint( unsigned char car )
+int	ft_isprint( int car )
 {
 	if (car == '\0')
 		return (1);

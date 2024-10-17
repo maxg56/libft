@@ -6,13 +6,13 @@
 /*   By: mgendrot <mgendrot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 12:56:32 by mgendrot          #+#    #+#             */
-/*   Updated: 2024/10/15 15:56:23 by mgendrot         ###   ########.fr       */
+/*   Updated: 2024/10/17 17:03:25 by mgendrot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_isalnum(unsigned char car)
+int	ft_isalnum(int car)
 {
 	if (car < 'A' || car > 'z')
 		return (0);
