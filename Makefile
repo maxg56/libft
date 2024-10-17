@@ -12,7 +12,7 @@ OBJS		= ${SCRS:.c=.o}
 
 NAME		= libft.a
 NAMETESTS	= tests.out	
-T 			= 0
+
 CC			= cc 
 CFLAGS		= -Wall -Wextra -Werror -g -Og
 
@@ -39,6 +39,4 @@ tests: all
 			./${NAMETESTS}
 			rm -f ${NAMETESTS}
 			
-			git add . && git commit -m "d" && git push
-
 .PHONY:		all clean fclean re tests
