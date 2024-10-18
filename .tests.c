@@ -6,7 +6,7 @@
 /*   By: mgendrot <mgendrot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 12:24:04 by mgendrot          #+#    #+#             */
-/*   Updated: 2024/10/18 17:45:21 by mgendrot         ###   ########.fr       */
+/*   Updated: 2024/10/18 17:48:01 by mgendrot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -254,7 +254,5 @@ int	main(void)
 	test_ft_strmapi();
 	ft_putendl_fd("maxxxxxx", 1);
 	ft_putnbr_fd(5, 1);
-	
-
 	return (0);
 }
