@@ -6,7 +6,7 @@
 /*   By: mgendrot <mgendrot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 12:24:04 by mgendrot          #+#    #+#             */
-/*   Updated: 2024/10/17 16:39:43 by mgendrot         ###   ########.fr       */
+/*   Updated: 2024/10/18 17:24:55 by mgendrot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,11 +50,12 @@ void	test_ft_isprint(void)
 void	test_ft_atoi(void)
 {
 	printf("__________________Testing ft_atoi__________________\n");
-	printf("\"42\": %d\n", ft_atoi("42"));
-	printf("\"-42\": %d\n", ft_atoi("-42"));
-	printf("\"   42abc\": %d\n", ft_atoi("   42abc"));
-	printf("\\: %d , %d\n", ft_atoi(""), atoi(""));
+	printf("\"42\": %d , %d \n", ft_atoi("42") ,atoi("42"));
+	printf("\"-42\": %d , %d \n", ft_atoi("-42"),  atoi("-42"));
+	printf("\"   42abc\": %d  , %d\n", ft_atoi("   42abc"), atoi("  42abc"));
+	printf("\\: %d , %d\n", ft_atoi("adx"), atoi("adx"));
 	printf("\\: %d , %d\n", ft_atoi("-2147483648"), atoi("-2147483648"));
+
 }
 
 // Fonction de test pour ft_bzero
@@ -143,7 +144,7 @@ void test_ft_strnstr() {
 // Fonction de test pour ft_toupper
 void test_ft_toupper(void) {
     printf("Testing ft_toupper:\n");
-    printf("'a' -> '%c'\n", ft_touper('a')); // Devrait imprimer 'A'
+    printf("'a' -> '%c'\n", ft_toupper('a')); // Devrait imprimer 'A'
 }
 
 // Fonction de test pour ft_tolower
@@ -156,7 +157,9 @@ void test_ft_tolower(void) {
 void test_ft_strrchr(void) {
     char str[] = "Hello";
     char *result = ft_strrchr(str, 'l');
-    printf("Testing ft_strrchr: %s\n", result); // Devrait imprimer "lo"
+	printf("Testing ft_strrchr: %s\n", result); // Devrait imprimer "lo"
+	result = ft_strrchr(str, 'H');
+	printf("Testing ft_strrchr: %s\n", result); // Devrait imprimer "lo"
 }
 
 // Fonction de test pour ft_strlcpy
@@ -171,29 +174,29 @@ void    test_ft_strtrim(void)
 {
     char *p;
 
-    printf( "ft_strtrim\n");
-    p = ft_strtrim(" h  -     ", " -");
-    printf( "%s : h\n",p);
-    free(p);
-    p = ft_strtrim("Hello", " ");
-    printf( "%s : Hello \n",p);
-    free(p);
-    p = ft_strtrim("Hello", "l ");
-    printf( "%s : Hello\n",p);
-    free(p);
-    p = ft_strtrim("", "l");
-    printf( "%s : \n",p);
-    free(p);
-    p = ft_strtrim("Hello", "Hello");
-    printf( "%s : \n",p);
-    free(p);
+	printf( "ft_strtrim\n");
+	p = ft_strtrim(" h  -     ", " -");
+	printf( "%s : h\n",p);
+	free(p);
+	p = ft_strtrim("Hello", " ");
+	printf( "%s : Hello \n",p);
+	free(p);
+	p = ft_strtrim("Hello", "l ");
+	printf( "%s : Hello\n",p);
+	free(p);
+	p = ft_strtrim("", "l");
+	printf( "%s : \n",p);
+	free(p);
+	p = ft_strtrim("Hello", "Hello");
+	printf( "%s : \n",p);
+	free(p);
 }
-void test_ft_itoa(void)
+void	test_ft_itoa(void)
 {
-    printf("Testing ft_itoa:\n");
-    printf("\"42\": %s\n", ft_itoa(42));
-    printf("\"-42\": %s\n", ft_itoa(-42));
-    printf("\"   42abc\": %s\n", ft_itoa(INT_MIN));
+	printf("Testing ft_itoa:\n");
+	printf("\"42\": %s\n", ft_itoa(42));
+	printf("\"-42\": %s\n", ft_itoa(-42));
+	printf("\"   42abc\": %s\n", ft_itoa(INT_MIN));
 }
 
 static char	change_case(unsigned int i, char c)
@@ -214,7 +217,6 @@ void	test_ft_strmapi(void)
 	result = ft_strmapi(str, change_case);
 
 	printf("__________Testing ft_strmaoi_________\n");
-	// Affichage du résultat
 	if (result)
 	{
 		printf("Résultat : %s\n", result);
@@ -249,6 +251,7 @@ int	main(void)
 	test_ft_itoa();
 	test_ft_strmapi();
 	ft_putendl_fd("maxxxxxx", 1);
+	ft_putnbr_fd(5, 1);
 
 	return (0);
 }

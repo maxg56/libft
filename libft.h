@@ -6,7 +6,7 @@
 /*   By: mgendrot <mgendrot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 11:33:25 by mgendrot          #+#    #+#             */
-/*   Updated: 2024/10/17 18:20:38 by mgendrot         ###   ########.fr       */
+/*   Updated: 2024/10/18 16:53:01 by mgendrot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,10 +35,11 @@ char	*ft_strdup(char *src);
 size_t	ft_strlcat(char *dst, const char *src, size_t dstsize);
 void	*ft_memcpy(void *dst, const void *src, size_t n);
 char	*ft_strnstr(const char *haystack, const char *needle, size_t len);
-int		ft_touper(unsigned char car);
+int		ft_toupper(unsigned char car);
 int		ft_tolower(unsigned char car);
 char	*ft_strrchr(const char *s, int c);
 size_t	ft_strlcpy(char *dst, const char *src, size_t size);
+int		ft_strncmp(const char *s1, const char *s2, size_t n);
 // p2
 char	*ft_substr(char const *s, unsigned int start, size_t len);
 char	*ft_strjoin(char const *s1, char const *s2);

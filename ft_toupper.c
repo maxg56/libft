@@ -1,28 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_calloc.c                                        :+:      :+:    :+:   */
+/*   ft_toupper.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mgendrot <mgendrot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/15 15:22:08 by mgendrot          #+#    #+#             */
-/*   Updated: 2024/10/18 16:49:15 by mgendrot         ###   ########.fr       */
+/*   Created: 2024/10/15 10:46:46 by mgendrot          #+#    #+#             */
+/*   Updated: 2024/10/18 17:19:58 by mgendrot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_calloc(size_t count, size_t size )
+int	ft_toupper(unsigned char car)
 {
-	void	*ptr;
-
-	if (size == 0)
-		return (0);
-	if (count * size > INT_MAX)
-		return (0);
-	ptr = (void *)malloc(count * size);
-	if (!ptr)
-		return (NULL);
-	ft_bzero(ptr, count);
-	return (ptr);
+	if (car >= 'a' && car <= 'z')
+		return (car - 32);
+	else
+		return (car);
 }
