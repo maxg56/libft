@@ -35,7 +35,7 @@ re:			fclean all
 
 
 tests: all
-			${CC} ${CFLAGS} tests.c -L . -l ft  -o ${NAMETESTS}
+			${CC} ${CFLAGS} .tests.c -L . -l ft  -o ${NAMETESTS}
 			./${NAMETESTS}
 			rm -f ${NAMETESTS}
 			

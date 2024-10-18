@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   tests.c                                            :+:      :+:    :+:   */
+/*   .tests.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mgendrot <mgendrot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 12:24:04 by mgendrot          #+#    #+#             */
-/*   Updated: 2024/10/18 17:24:55 by mgendrot         ###   ########.fr       */
+/*   Updated: 2024/10/18 17:45:21 by mgendrot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -160,6 +160,8 @@ void test_ft_strrchr(void) {
 	printf("Testing ft_strrchr: %s\n", result); // Devrait imprimer "lo"
 	result = ft_strrchr(str, 'H');
 	printf("Testing ft_strrchr: %s\n", result); // Devrait imprimer "lo"
+	result = ft_strrchr(NULL, ' ');
+	printf("Testing ft_strrchr: %s\n", result);
 }
 
 // Fonction de test pour ft_strlcpy
@@ -252,6 +254,7 @@ int	main(void)
 	test_ft_strmapi();
 	ft_putendl_fd("maxxxxxx", 1);
 	ft_putnbr_fd(5, 1);
+	
 
 	return (0);
 }
