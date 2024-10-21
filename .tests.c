@@ -6,12 +6,15 @@
 /*   By: mgendrot <mgendrot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 12:24:04 by mgendrot          #+#    #+#             */
-/*   Updated: 2024/10/18 17:48:01 by mgendrot         ###   ########.fr       */
+/*   Updated: 2024/10/21 16:47:59 by mgendrot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 
 #include "libft.h"
+#include <string.h>
+#include <stdio.h>
+#include <stdlib.h>
 
 void	test_ft_isalpha(void)
 {
@@ -50,12 +53,13 @@ void	test_ft_isprint(void)
 void	test_ft_atoi(void)
 {
 	printf("__________________Testing ft_atoi__________________\n");
-	printf("\"42\": %d , %d \n", ft_atoi("42") ,atoi("42"));
-	printf("\"-42\": %d , %d \n", ft_atoi("-42"),  atoi("-42"));
+	printf("\"42\": %d , %d \n", ft_atoi("42"), atoi("42"));
+	printf("\"-42\": %d , %d \n", ft_atoi("-42"), atoi("-42"));
 	printf("\"   42abc\": %d  , %d\n", ft_atoi("   42abc"), atoi("  42abc"));
 	printf("\\: %d , %d\n", ft_atoi("adx"), atoi("adx"));
 	printf("\\: %d , %d\n", ft_atoi("-2147483648"), atoi("-2147483648"));
-
+	printf("\\: %d , %d\n", ft_atoi("\n\v\t\r\f21"), atoi("\n\v\f\t\r21"));
+	printf("\\: %d , %d\n", ft_atoi("-2147483648"), atoi("-2147483648"));
 }
 
 // Fonction de test pour ft_bzero
@@ -120,18 +124,34 @@ void test_ft_strdup() {
 
 // Fonction de test pour ft_strlcat
 void test_ft_strlcat() {
-    char dest[20] = "Hello";
+    char dest[1] = "";
     char src[] = " World";
-    size_t len = ft_strlcat(dest, src, sizeof(dest));
-    printf("Testing ft_strlcat: %s (length: %zu)\n", dest, len); // Devrait imprimer "Hello World"
+	size_t len = ft_strlcat(dest, src, 0);
+	printf( "__________________ft_strlcat__________________\n");
+    printf("Testing ft_memcpy: %s (length: %zu) \n", dest , len);
 }
 
 // Fonction de test pour ft_memcpy
 void test_ft_memcpy() {
     char dest[20];
     char src[] = "Hello";
+	char dest2[20];
+	memcpy(dest2, src, 6);
     ft_memcpy(dest, src, 6);
-    printf("Testing ft_memcpy: %s\n", dest); // Devrait imprimer "Hello"
+	printf( "__________________ft_strtrim__________________\n");
+    printf("Testing ft_memcpy: %s ,  %s \n", dest , dest2);
+	char dest3[20];
+	char src2[] = "Hello";
+	char dest4[20];
+	memcpy(dest3, src2, 2);
+    ft_memcpy(dest4, src2, 2);
+	printf("Testing ft_memcpy: %s ,  %s \n", dest4 , dest3);
+	char dest5[20];
+	char src3[] = "";
+	char dest6[20];
+	memcpy(dest5, src3, 2);
+    ft_memcpy(dest6, src3, 2);
+	printf("Testing ft_memcpy: |%s| ,  |%s| \n", dest6 , dest5);
 }
 
 // Fonction de test pour ft_strnstr
@@ -171,6 +191,7 @@ void test_ft_strlcpy(void) {
     size_t len = ft_strlcpy(dest, src, sizeof(dest));
     printf("Testing ft_strlcpy: %s (length: %zu)\n", dest, len); // Devrait imprimer "Hello"
 }
+
 
 void    test_ft_strtrim(void)
 {

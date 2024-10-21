@@ -34,9 +34,9 @@ fclean:		clean
 re:			fclean all
 
 
-tests: all
-			${CC} ${CFLAGS} .tests.c -L . -l ft  -o ${NAMETESTS}
-			./${NAMETESTS}
-			rm -f ${NAMETESTS}
+#tests: all
+#			${CC} ${CFLAGS} .tests.c -L . -l ft  -o ${NAMETESTS}
+#			./${NAMETESTS}
+#			rm -f ${NAMETESTS}
 			
-.PHONY:		all clean fclean re tests
+.PHONY:		all clean fclean re #tests

@@ -6,7 +6,7 @@
 /*   By: mgendrot <mgendrot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/15 15:19:21 by mgendrot          #+#    #+#             */
-/*   Updated: 2024/10/17 12:53:03 by mgendrot         ###   ########.fr       */
+/*   Updated: 2024/10/21 18:52:10 by mgendrot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	ft_atoi(const char *str)
 	i = 0;
 	neg = 1;
 	num = 0;
-	while (str[i] == ' ')
+	while ((str[i] <= '\r' && str[i] >= '\t' )|| str[i] == ' ')
 		i++;
 	if (str[i] == '-' || str[i] == '+')
 	{

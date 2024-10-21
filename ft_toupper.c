@@ -6,13 +6,13 @@
 /*   By: mgendrot <mgendrot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/15 10:46:46 by mgendrot          #+#    #+#             */
-/*   Updated: 2024/10/18 17:19:58 by mgendrot         ###   ########.fr       */
+/*   Updated: 2024/10/21 18:35:12 by mgendrot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_toupper(unsigned char car)
+int	ft_toupper(int car)
 {
 	if (car >= 'a' && car <= 'z')
 		return (car - 32);
