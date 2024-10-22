@@ -6,7 +6,7 @@
 /*   By: mgendrot <mgendrot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 11:33:25 by mgendrot          #+#    #+#             */
-/*   Updated: 2024/10/21 18:37:03 by mgendrot         ###   ########.fr       */
+/*   Updated: 2024/10/22 17:51:59 by mgendrot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,17 @@
 # include <limits.h>
 # include <unistd.h>
 
+typedef struct s_list
+{
+	void			*content;
+	struct s_list	*next;
+}		t_list;
+
 int		ft_isalpha(int car);
 int		ft_isdigit(int car );
 int		ft_isprint(int car );
 int		ft_isascii(int car );
+int		ft_isalnum(int car);
 size_t	ft_strlen(const char *str);
 int		ft_atoi(const char *str);
 void	ft_bzero(void *b, size_t n);
@@ -52,5 +59,11 @@ void	ft_putchar_fd(char c, int fd);
 void	ft_putstr_fd(char *s, int fd);
 void	ft_putendl_fd(char *s, int fd);
 void	ft_putnbr_fd(int n, int fd);
+// bonuse 
+t_list	*ft_lstnew(void *content);
+void	ft_lstadd_front(t_list **lst, t_list *new);
+int		ft_lstsize(t_list *lst);
+t_list	*ft_lstlast(t_list *lst);
+void	ft_lstdelone(t_list *lst, void (*del)(void*));
 
 #endif 

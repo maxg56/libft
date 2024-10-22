@@ -1,21 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isalnum.c                                       :+:      :+:    :+:   */
+/*   ft_lstdelone_bons.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mgendrot <mgendrot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/14 12:56:32 by mgendrot          #+#    #+#             */
-/*   Updated: 2024/10/22 12:33:52 by mgendrot         ###   ########.fr       */
+/*   Created: 2024/10/22 17:42:56 by mgendrot          #+#    #+#             */
+/*   Updated: 2024/10/22 17:55:14 by mgendrot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_isalnum(int car)
+void	ft_lstdelone(t_list *lst, void (*del)(void*))
 {
-	if ((car >= 'a' && car <= 'z') || (car >= 'A' && car <= 'Z')
-		|| (car >= '0' && car <= '9'))
-		return (1);
-	return (0);
+	if (!del)
+		return ;
+	if (lst)
+	{
+		(*del)(lst->content);
+		free(lst);
+	}
 }

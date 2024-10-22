@@ -1,21 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isalnum.c                                       :+:      :+:    :+:   */
+/*   ft_lstlast_bons.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mgendrot <mgendrot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/14 12:56:32 by mgendrot          #+#    #+#             */
-/*   Updated: 2024/10/22 12:33:52 by mgendrot         ###   ########.fr       */
+/*   Created: 2024/10/22 17:29:56 by mgendrot          #+#    #+#             */
+/*   Updated: 2024/10/22 17:40:57 by mgendrot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_isalnum(int car)
+t_list	*ft_lstlast(t_list *lst)
 {
-	if ((car >= 'a' && car <= 'z') || (car >= 'A' && car <= 'Z')
-		|| (car >= '0' && car <= '9'))
-		return (1);
-	return (0);
+	t_list	*p;
+
+	if (!lst)
+		return (NULL);
+	p = lst;
+	while (p->next != NULL)
+		p = p->next;
+	return (p);
 }

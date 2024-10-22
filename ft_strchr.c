@@ -6,7 +6,7 @@
 /*   By: mgendrot <mgendrot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/15 11:18:19 by mgendrot          #+#    #+#             */
-/*   Updated: 2024/10/17 16:24:46 by mgendrot         ###   ########.fr       */
+/*   Updated: 2024/10/22 14:47:32 by mgendrot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,13 @@
 
 char	*ft_strchr(const char *s, int c)
 {
-	while ((*s) && (*s != c))
+	while (*s)
+	{
+		if (*s == (char)c)
+			return ((char *)s);
 		s++;
-	if (*s == c)
+	}
+	if (c == '\0')
 		return ((char *)s);
-	return ((char *) NULL);
+	return (NULL);
 }

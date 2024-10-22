@@ -1,6 +1,7 @@
 {
 	"files.associations": {
 		"random": "c",
-		"queue": "c"
+		"queue": "c",
+		"libft.h": "c"
 	}
 }

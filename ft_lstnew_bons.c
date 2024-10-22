@@ -1,21 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isalnum.c                                       :+:      :+:    :+:   */
+/*   ft_lstnew_bons.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mgendrot <mgendrot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/14 12:56:32 by mgendrot          #+#    #+#             */
-/*   Updated: 2024/10/22 12:33:52 by mgendrot         ###   ########.fr       */
+/*   Created: 2024/10/22 16:20:34 by mgendrot          #+#    #+#             */
+/*   Updated: 2024/10/22 17:17:00 by mgendrot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_isalnum(int car)
+t_list	*ft_lstnew(void *content)
 {
-	if ((car >= 'a' && car <= 'z') || (car >= 'A' && car <= 'Z')
-		|| (car >= '0' && car <= '9'))
-		return (1);
-	return (0);
+	t_list	*lst;
+
+	lst = malloc(sizeof(t_list));
+	if (!lst)
+		return (NULL);
+	lst->next = NULL;
+	lst->content = content;
+	return (lst);
 }

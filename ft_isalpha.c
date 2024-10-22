@@ -6,7 +6,7 @@
 /*   By: mgendrot <mgendrot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 11:20:23 by mgendrot          #+#    #+#             */
-/*   Updated: 2024/10/17 17:53:23 by mgendrot         ###   ########.fr       */
+/*   Updated: 2024/10/22 16:00:40 by mgendrot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,7 @@
 
 int	ft_isalpha(int car)
 {
-	if (car < 'A' || car > 'z')
-		return (0);
-	if (car > 'Z' && car < 'a')
+	if ((car < 'A' || car > 'z' ) || (car > 'Z' && car < 'a'))
 		return (0);
 	return (1);
 }

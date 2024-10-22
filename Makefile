@@ -10,6 +10,11 @@ SCRS		= ft_isdigit.c ft_isalpha.c  ft_isascii.c ft_isprint.c ft_memchr.c\
 
 OBJS		= ${SCRS:.c=.o}
 
+BONUS		= ft_lstnew_bons.c  ft_lstadd_fron_bons.c ft_lstsize_bons.c \
+			  ft_lstlast_bons.c
+
+BONUS_OBJS	= ${BONUS:.c=.o}
+
 NAME		= libft.a
 NAMETESTS	= tests.out	
 
@@ -23,20 +28,21 @@ all:		${NAME}
 
 ${NAME}:	${OBJS}
 			ar -rcs ${NAME} ${OBJS}
-			make clean
 
 clean:
-			rm -f ${OBJS}
+			rm -f ${OBJS} ${BONUS_OBJS}
 
 fclean:		clean
 			rm -f ${NAME}
 
 re:			fclean all
 
+bonus :		$(OBJS) $(BONUS_OBJS)
+			ar rcs $(NAME) $^
 
-#tests: all
-#			${CC} ${CFLAGS} .tests.c -L . -l ft  -o ${NAMETESTS}
-#			./${NAMETESTS}
-#			rm -f ${NAMETESTS}
+tests:		all
+			${CC} ${CFLAGS} .tests.c -L . -l ft  -o ${NAMETESTS}
+			./${NAMETESTS}
+			rm -f ${NAMETESTS}
 			
-.PHONY:		all clean fclean re #tests
+.PHONY:		all clean fclean re bonus tests 

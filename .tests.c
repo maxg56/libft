@@ -6,7 +6,7 @@
 /*   By: mgendrot <mgendrot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 12:24:04 by mgendrot          #+#    #+#             */
-/*   Updated: 2024/10/21 16:47:59 by mgendrot         ###   ########.fr       */
+/*   Updated: 2024/10/22 17:00:10 by mgendrot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,13 +83,7 @@ void test_ft_calloc() {
 // Fonction de test pour ft_memchr
 void test_ft_memchr() {
     char str[] = "Hello";
-    char *result = (char *)ft_memchr(str, 'e', 5);
-    printf("Testing ft_memchr: %s\n", result ? result : "Not found"); // Devrait imprimer "ello"
-}
-
-// Fonction de test pour ft_memcmp
-void test_ft_memcmp() {
-    char str1[] = "Hello";
+    char *result = (charlst;
     char str2[] = "Helloo";
     printf("Testing ft_memcmp: %d\n", ft_memcmp(str1, str2, 6)); // Devrait imprimer 0
 }
@@ -98,7 +92,7 @@ void test_ft_memcmp() {
 void test_ft_memmove() {
     char dest[20] = "Hello, World!";
     ft_memmove(dest + 7, dest, 5);
-    printf("Testing ft_memmove: %s\n", dest); // Devrait imprimer "Hello, Hello!"
+    printf("Testing ft_melstmmove: %s\n", dest); // Devrait imprimer "Hello, Hello!"
 }
 
 // Fonction de test pour ft_memset
@@ -106,7 +100,7 @@ void test_ft_memset() {
     char str[20] = "Hello";
     ft_memset(str, '*', 3);
     printf("Testing ft_memset: %s\n", str); // Devrait imprimer "***lo"
-}
+}lst
 
 // Fonction de test pour ft_strchr
 void test_ft_strchr() {
@@ -174,7 +168,7 @@ void test_ft_tolower(void) {
 }
 
 // Fonction de test pour ft_strrchr
-void test_ft_strrchr(void) {
+void test_ft_strrchr(voidlst) {
     char str[] = "Hello";
     char *result = ft_strrchr(str, 'l');
 	printf("Testing ft_strrchr: %s\n", result); // Devrait imprimer "lo"
