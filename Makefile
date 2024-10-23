@@ -10,7 +10,7 @@ SCRS		= ft_isdigit.c   ft_isalpha.c    ft_isascii.c   ft_isprint.c  ft_memchr.c 
 
 OBJS		= ${SCRS:.c=.o}
 
-BONUS		= ft_lstnew_bons.c  ft_lstadd_fron_bons.c ft_lstsize_bons.c   \
+BONUS		= ft_lstnew_bons.c  ft_lstadd_front_bons.c ft_lstsize_bons.c   \
 			  ft_lstlast_bons.c ft_lstdelone_bons.c   ft_lstclear_bons.c  \
 			  ft_lstiter_bons.c ft_lstmap_bons.c 	  ft_lstadd_back_bons.c 
 
@@ -18,6 +18,7 @@ BONUS		= ft_lstnew_bons.c  ft_lstadd_fron_bons.c ft_lstsize_bons.c   \
 BONUS_OBJS	= ${BONUS:.c=.o}
 
 NAME		= libft.a
+
 NAMETESTS	= tests.out	
 
 CC			= cc 

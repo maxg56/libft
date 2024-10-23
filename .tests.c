@@ -6,7 +6,7 @@
 /*   By: mgendrot <mgendrot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 12:24:04 by mgendrot          #+#    #+#             */
-/*   Updated: 2024/10/22 17:00:10 by mgendrot         ###   ########.fr       */
+/*   Updated: 2024/10/23 12:07:12 by mgendrot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,7 +100,7 @@ void test_ft_memset() {
     char str[20] = "Hello";
     ft_memset(str, '*', 3);
     printf("Testing ft_memset: %s\n", str); // Devrait imprimer "***lo"
-}lst
+}
 
 // Fonction de test pour ft_strchr
 void test_ft_strchr() {
