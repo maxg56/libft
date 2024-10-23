@@ -6,7 +6,7 @@
 /*   By: mgendrot <mgendrot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/15 09:44:42 by mgendrot          #+#    #+#             */
-/*   Updated: 2024/10/16 10:39:46 by mgendrot         ###   ########.fr       */
+/*   Updated: 2024/10/23 16:25:14 by mgendrot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,6 @@ size_t	ft_strlcpy(char *dst, const char *src, size_t size)
 	unsigned int	i;
 
 	i = 0;
-	if (!dst || !src)
-		return (0);
 	if (size > 0)
 	{
 		while (--size && src[i])

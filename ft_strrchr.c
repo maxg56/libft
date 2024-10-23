@@ -6,7 +6,7 @@
 /*   By: mgendrot <mgendrot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/15 11:35:14 by mgendrot          #+#    #+#             */
-/*   Updated: 2024/10/22 12:30:41 by mgendrot         ###   ########.fr       */
+/*   Updated: 2024/10/23 16:52:53 by mgendrot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ char	*ft_strrchr(const char *s, int c)
 	char	*ptr;
 
 	ptr = NULL;
-	while (*s != '\0')
+	while (*s)
 	{
 		if ((unsigned char)*s == (unsigned char)c)
 			ptr = (char *)s;

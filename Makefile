@@ -10,9 +10,9 @@ SCRS		= ft_isdigit.c   ft_isalpha.c    ft_isascii.c   ft_isprint.c  ft_memchr.c 
 
 OBJS		= ${SCRS:.c=.o}
 
-BONUS		= ft_lstnew_bons.c  ft_lstadd_front_bons.c ft_lstsize_bons.c   \
-			  ft_lstlast_bons.c ft_lstdelone_bons.c   ft_lstclear_bons.c  \
-			  ft_lstiter_bons.c ft_lstmap_bons.c 	  ft_lstadd_back_bons.c 
+BONUS		= ft_lstnew_bonus.c  ft_lstadd_front_bonus.c ft_lstsize_bonus.c   \
+			  ft_lstlast_bonus.c ft_lstdelone_bonus.c   ft_lstclear_bonus.c  \
+			  ft_lstiter_bonus.c ft_lstmap_bonus.c 	  ft_lstadd_back_bonus.c 
 
 
 BONUS_OBJS	= ${BONUS:.c=.o}
@@ -22,12 +22,12 @@ NAME		= libft.a
 NAMETESTS	= tests.out	
 
 CC			= cc 
-CFLAGS		= -Wall -Wextra -Werror -g -Og
+CFLAGS		= -Wall -Wextra -Werror 
 
 all:		${NAME}
 
 %.o: %.c
-			${CC} ${CFLAGS} -c $< -o $@ -I libft.h
+			${CC} ${CFLAGS} -c $< -o $@
 
 ${NAME}:	${OBJS}
 			ar -rcs ${NAME} ${OBJS}
