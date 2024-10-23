@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstlast_bons.c                                  :+:      :+:    :+:   */
+/*   ft_lstlast_bonus.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mgendrot <mgendrot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/22 17:29:56 by mgendrot          #+#    #+#             */
-/*   Updated: 2024/10/22 17:40:57 by mgendrot         ###   ########.fr       */
+/*   Updated: 2024/10/23 17:09:04 by mgendrot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,9 @@
 
 t_list	*ft_lstlast(t_list *lst)
 {
-	t_list	*p;
-
 	if (!lst)
 		return (NULL);
-	p = lst;
-	while (p->next != NULL)
-		p = p->next;
-	return (p);
+	while (lst->next)
+		lst = lst->next;
+	return (lst);
 }
