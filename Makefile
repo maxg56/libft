@@ -39,7 +39,7 @@ ${NAME}:	${OBJS}
 			ar -rcs ${NAME} ${OBJS}
 
 clean:
-			${RM} ${OBJS}
+			${RM} ${OBJS} ${BONUS_OBJS}
 
 fclean:		clean
 			${RM} ${NAME}
