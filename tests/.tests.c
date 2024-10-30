@@ -6,15 +6,13 @@
 /*   By: mgendrot <mgendrot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 12:24:04 by mgendrot          #+#    #+#             */
-/*   Updated: 2024/10/23 13:34:55 by mgendrot         ###   ########.fr       */
+/*   Updated: 2024/10/30 15:15:06 by mgendrot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 
-#include "libft.h"
-#include <string.h>
-#include <stdio.h>
-#include <stdlib.h>
+#include "tests.h"
+
 
 void	test_ft_isalpha(void)
 {
@@ -81,11 +79,20 @@ void test_ft_calloc() {
 }
 
 // Fonction de test pour ft_memchr
-void test_ft_memchr() {
+void test_ft_memchr() 
+{
     char str[] = "Hello";
-    char *result = (charlst;
+    char *result = ft_memchr(str, 'e', 5); // Replace with your custom ft_memchr function
+    if (result != NULL)
+        printf("Testing ft_memchr: Found 'e' at position %ld\n", result - str);
+    else
+        printf("Testing ft_memchr: 'e' not found\n");
+}
+
+void test_ft_memcmp() {
+    char str1[] = "Hello";
     char str2[] = "Helloo";
-    printf("Testing ft_memcmp: %d\n", ft_memcmp(str1, str2, 6)); // Devrait imprimer 0
+    printf("Testing ft_memcmp: %d\n", ft_memcmp(str1, str2, 6)); // Should print 0 if they are equal for 6 chars
 }
 
 // Fonction de test pour ft_memmove
@@ -156,7 +163,7 @@ void test_ft_strnstr() {
 }
 
 // Fonction de test pour ft_toupper
-void test_ft_toupper(void) {
+void test_ft_strnstr() {
     printf("Testing ft_toupper:\n");
     printf("'a' -> '%c'\n", ft_toupper('a')); // Devrait imprimer 'A'
 }
@@ -168,7 +175,7 @@ void test_ft_tolower(void) {
 }
 
 // Fonction de test pour ft_strrchr
-void test_ft_strrchr(voidlst) {
+void test_ft_strrchr(void) {
     char str[] = "Hello";
     char *result = ft_strrchr(str, 'l');
 	printf("Testing ft_strrchr: %s\n", result); // Devrait imprimer "lo"
@@ -240,34 +247,4 @@ void	test_ft_strmapi(void)
 		free(result);
 	}
 }
-// Fonction principale pour exécuter les tests
 
-int	main(void)
-{
-	test_ft_isalpha();
-	test_ft_isdigit();
-	test_ft_isascii();
-	test_ft_isprint();
-	test_ft_atoi();
-	test_ft_bzero();
-	test_ft_calloc();
-	test_ft_memchr();
-	test_ft_memcmp();
-	test_ft_memmove();
-	test_ft_memset();
-	test_ft_strchr();
-	test_ft_strdup();
-	test_ft_strlcat();
-	test_ft_memcpy();
-	test_ft_strnstr();
-	test_ft_toupper();
-	test_ft_tolower();
-	test_ft_strrchr();
-	test_ft_strlcpy();
-	test_ft_strtrim();
-	test_ft_itoa();
-	test_ft_strmapi();
-	ft_putendl_fd("maxxxxxx", 1);
-	ft_putnbr_fd(5, 1);
-	return (0);
-}
