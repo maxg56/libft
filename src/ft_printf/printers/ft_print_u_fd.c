@@ -1,42 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strjoin.c                                       :+:      :+:    :+:   */
+/*   ft_print_u_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mgendrot <mgendrot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/16 14:08:12 by mgendrot          #+#    #+#             */
-/*   Updated: 2024/11/08 12:27:48 by mgendrot         ###   ########.fr       */
+/*   Created: 2024/10/30 13:52:19 by mgendrot          #+#    #+#             */
+/*   Updated: 2024/11/08 13:40:19 by mgendrot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strjoin(char const *s1, char const *s2)
+static int	ft_put_u(unsigned int n, int fd)
 {
-	int		i;
-	int		len1;
-	int		len2;
-	char	*str;
+	int	count;
 
-	if (s1 && s2)
+	count = 0;
+	if (n >= 10)
 	{
-		len1 = ft_strlen(s1);
-		len2 = ft_strlen(s2);
-		str = (char *)malloc(sizeof(char) * (len1 + len2 + 1));
-		if (!str)
-			return (NULL);
-		i = -1;
-		while (s1[++i])
-			str[i] = s1[i];
-		i = -1;
-		while (s2[++i])
-		{
-			str[len1] = s2[i];
-			len1++;
-		}
-		str[len1] = '\0';
-		return (str);
+		count += ft_put_u(n / 10, fd);
+		count += ft_put_u(n % 10, fd);
 	}
-	return (NULL);
+	else
+		count += ft_print_c_fd(n + 48, fd);
+	return (count);
+}
+
+int	ft_print_u_fd(unsigned int n, int fd)
+{
+	int	count;
+
+	count = 0;
+	count += ft_put_u(n, fd);
+	if (count < 0)
+		return (-1);
+	return (count);
 }
