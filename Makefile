@@ -6,7 +6,7 @@
 #    By: mgendrot <mgendrot@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/08 13:59:30 by mgendrot          #+#    #+#              #
-#    Updated: 2024/11/12 16:19:57 by mgendrot         ###   ########.fr        #
+#    Updated: 2024/11/12 16:24:19 by mgendrot         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -47,11 +47,10 @@ TERM_CLEAR_LINE		=   \033[2K\r
 #                                   Sources                                    #
 #                                                                              #
 # **************************************************************************** #
+
 FTPRINTF_DIR     =  ft_printf/
-FTPRINT       	=   ft_printf ft_print_c_fd ft_print_d_fd ft_print_x_fd ft_print_s_fd \
-					ft_print_p_fd ft_print_u_fd ft_print_pct_fd
-
-
+FTPRINT       	=   ft_printf ft_print_c_fd ft_print_d_fd ft_print_x_fd \
+					ft_print_s_fd ft_print_p_fd ft_print_u_fd ft_print_pct_fd 
 
 FTGNL_DIR	=	ft_gnl/
 FTGNL		=	get_next_line
@@ -82,6 +81,7 @@ FTLST		=	ft_lstadd_back ft_lstadd_front ft_lstclear ft_lstdelone \
 #                                   OBJS                                       #
 #                                                                              #
 # **************************************************************************** #
+
 SRCS_DIR 	=	src/
 OBJS_DIR	=	obj/
 
@@ -122,7 +122,7 @@ endef
 
 # **************************************************************************** #
 #                                                                              #
-#                       \__                                                    #
+#                                                                              #
 #                                                                              #
 # **************************************************************************** #
 OBJSF		=	.cache_exists
