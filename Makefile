@@ -6,7 +6,7 @@
 #    By: mgendrot <mgendrot@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/08 13:59:30 by mgendrot          #+#    #+#              #
-#    Updated: 2024/11/12 16:24:19 by mgendrot         ###   ########.fr        #
+#    Updated: 2024/11/29 15:48:35 by mgendrot         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,15 +18,14 @@ NAMETESTS	= tests.out
 INCLUDES	=	include
 
 CC			= cc 
-CFLAGS		= -Wall -Wextra -Werror -I
+CFLAGS		= -Wall -Wextra -Werror -I $(INCLUDES)
 
-RM 			= rm 
+RM 			= rm -f
 AR			= ar rcs
 MKDIR		= mkdir
 
 # **************************************************************************** #
-#                                   Colors                                     #
-#                                                                              #
+#                                   Colors                                     #                                                                            #
 # **************************************************************************** #
 DEF_COLOR   		=   \033[0;39m
 GRAY 				=   \033[0;90m
@@ -43,14 +42,13 @@ TERM_UP				=   \033[1A
 TERM_CLEAR_LINE		=   \033[2K\r
 
 # **************************************************************************** #
-#                                                                              #
 #                                   Sources                                    #
-#                                                                              #
 # **************************************************************************** #
 
 FTPRINTF_DIR     =  ft_printf/
 FTPRINT       	=   ft_printf ft_print_c_fd ft_print_d_fd ft_print_x_fd \
-					ft_print_s_fd ft_print_p_fd ft_print_u_fd ft_print_pct_fd 
+					ft_print_s_fd ft_print_p_fd ft_print_u_fd ft_print_pct_fd \
+					ft_dprintf
 
 FTGNL_DIR	=	ft_gnl/
 FTGNL		=	get_next_line
@@ -65,7 +63,7 @@ FTPUT_DIR	=	ft_put/
 FTPUT		=	ft_putchar_fd ft_putendl_fd ft_putnbr_fd ft_putstr_fd
 
 FTTO_DIR	=	ft_to/
-FTTO		=	ft_atoi ft_itoa ft_tolower ft_toupper
+FTTO		=	ft_atoi ft_itoa ft_tolower ft_toupper ft_atol
 
 FTSTR_DIR	=	ft_str/
 FTSTR		=	ft_split ft_strchr ft_strdup ft_striteri ft_strjoin \
@@ -77,30 +75,23 @@ FTLST		=	ft_lstadd_back ft_lstadd_front ft_lstclear ft_lstdelone \
 				ft_lstiter ft_lstlast ft_lstmap ft_lstnew ft_lstsize
 
 # **************************************************************************** #
-#                                                                              #
 #                                   OBJS                                       #
-#                                                                              #
 # **************************************************************************** #
 
-SRCS_DIR 	=	src/
-OBJS_DIR	=	obj/
+SRCS_DIR        = src/
+OBJ_DIR         = obj/
 
-SRC_FILES  += $(addprefix $(FTPRINTF_DIR),$(FTPRINT))
-SRC_FILES  += $(addprefix $(FTGNL_DIR),$(FTGNL))
-SRC_FILES  += $(addprefix $(FTIS_DIR),$(FTIS))
-SRC_FILES  += $(addprefix $(FTPUT_DIR),$(FTPUT))
-SRC_FILES  += $(addprefix $(FTMEM_DIR),$(FTMEM))
-SRC_FILES  += $(addprefix $(FTTO_DIR),$(FTTO))
-SRC_FILES  += $(addprefix $(FTSTR_DIR),$(FTSTR))
-SRC_FILES  += $(addprefix $(FTLST_DIR),$(FTLST))
+SRC_FILES       = $(addprefix $(FTPRINTF_DIR),$(FTPRINT)) $(addprefix $(FTGNL_DIR),$(FTGNL)) \
+                  $(addprefix $(FTIS_DIR),$(FTIS)) $(addprefix $(FTPUT_DIR),$(FTPUT)) \
+                  $(addprefix $(FTMEM_DIR),$(FTMEM)) $(addprefix $(FTTO_DIR),$(FTTO)) \
+                  $(addprefix $(FTSTR_DIR),$(FTSTR)) $(addprefix $(FTLST_DIR),$(FTLST))
 
-SRCS 		= 	$(addprefix $(SRCS_DIR), $(addsuffix .c, $(SRC_FILES)))
-OBJS 		= 	$(addprefix $(OBJS_DIR), $(addsuffix .o, $(SRC_FILES)))
+SRCS            = $(addprefix $(SRCS_DIR), $(addsuffix .c, $(SRC_FILES)))
+OBJS            = $(patsubst %.c, $(OBJ_DIR)%.o, $(SRCS))
+DEPS            = $(OBJ:.o=.d)
 
 # **************************************************************************** #
-#                                                                              #
 #                             progress_update                                  #
-#                                                                              #
 # **************************************************************************** #
 TOTAL_FILES      := $(words $(SRC_FILES))
 COMPILED_COUNT    = 0
@@ -125,39 +116,49 @@ endef
 #                                                                              #
 #                                                                              #
 # **************************************************************************** #
-OBJSF		=	.cache_exists
+
+all:	$(NAME)
+
+$(NAME):	$(OBJS)
+	@${AR} ${NAME} ${OBJS} || exit 1
+	@echo "$(GREEN)Libft compiled!$(DEF_COLOR)"
 
 
-all:		${NAME}
+$(OBJ_DIR)%.o: %.c | $(OBJF)
+	@mkdir -p $(dir $@)
+	$(call progress_update,$(notdir $@))
+	@$(CC) $(CFLAGS) -c $< -o $@ || exit 1
 
-${NAME}:	${OBJS}
-			@${AR} ${NAME} ${OBJS}
-			@echo "$(GREEN)Libft compiled!$(DEF_COLOR)"
+include $(DEPS)
 
+%.d: %.c
+	@$(CC) $(CFLAGS) -MM $< -MF $@
 
-$(OBJS_DIR)%.o : $(SRCS_DIR)%.c | $(OBJSF)
-			@mkdir -p $(dir $@)
-			$(call progress_update,$(notdir $@))
-			@$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
-$(OBJSF):
+$(OBJF):
+	@$(MKDIR) -p $(OBJ_DIR)
 
 clean:
-			@$(RM) -rf $(OBJS_DIR)
-			@$(RM) -f $(OBJSF)
-			@echo  "$(RED)libft objects files cleaned!$(DEF_COLOR)"
+	@if [ -d $(OBJ_DIR) ]; then \
+		$(RM) -r $(OBJ_DIR); \
+		echo "$(RED)libft object files cleaned!$(DEF_COLOR)"; \
+	fi
 
-fclean:		clean
-			@${RM} -f ${NAME}
-			@echo  "$(CYAN)libft executable files cleaned!$(DEF_COLOR)"
+fclean:	clean
+	@if [ -f $(NAME) ]; then \
+		$(RM) $(NAME); \
+		echo "$(CYAN)libft executable cleaned!$(DEF_COLOR)"; \
+	fi
 
-re:			fclean all
-			@echo  "$(GREEN)Cleaned and rebuilt everything for libft!$(DEF_COLOR)"
+re:	fclean all
+	@echo  "$(GREEN)Cleaned and rebuilt everything for libft!$(DEF_COLOR)"
 
+tests:	all
+	@${CC} ${CFLAGS} tests/.tests.c tests/main.c -L . -l ft  -o ${NAMETESTS}
+	@echo -e "$(GREEN)$(BOLD)tests compiled!$(END)$(DEF_COLOR)""
+	./${NAMETESTS}
+	@rm -f ${NAMETESTS}
 
-tests:		all
-			 @${CC} ${CFLAGS} tests/.tests.c tests/main.c -L . -l ft  -o ${NAMETESTS}
-			 @echo -e "$(GREEN)$(BOLD)tests compiled!$(END)$(DEF_COLOR)""
-			 ./${NAMETESTS}
-			 @rm -f ${NAMETESTS}
-			
-.PHONY:		all clean fclean re  tests 
+norm:
+	@norminette $(SRCS) $(INCLUDE) | grep -v Norme -B1 || true
+	
+.PHONY:		all clean fclean re  tests norm

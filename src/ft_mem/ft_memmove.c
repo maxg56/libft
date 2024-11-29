@@ -6,7 +6,7 @@
 /*   By: mgendrot <mgendrot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/15 09:17:55 by mgendrot          #+#    #+#             */
-/*   Updated: 2024/10/23 16:15:13 by mgendrot         ###   ########.fr       */
+/*   Updated: 2024/11/15 13:02:02 by mgendrot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@ void	*ft_memmove(void *dst, const void *src, size_t len)
 	char	*d;
 	size_t	i;
 
-	if (len == 0 || (!dst && !src))
-		return (dst);
+	if (len == 0 || !dst || !src)
+		return (NULL);
 	s = (char *)src;
 	d = (char *)dst;
 	i = 0;

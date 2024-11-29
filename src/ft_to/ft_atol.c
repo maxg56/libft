@@ -1,18 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_pct_fd.c                                  :+:      :+:    :+:   */
+/*   ft_atol.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mgendrot <mgendrot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/30 13:44:22 by mgendrot          #+#    #+#             */
-/*   Updated: 2024/11/15 13:03:17 by mgendrot         ###   ########.fr       */
+/*   Created: 2024/11/19 16:35:01 by mgendrot          #+#    #+#             */
+/*   Updated: 2024/11/22 11:02:00 by mgendrot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_print_pct_fd(int fd)
+long	ft_atol(const char *str)
 {
-	return (write(fd, "%", 1));
+	int		i;
+	long	neg;
+	long	num;
+
+	i = 0;
+	neg = 1;
+	num = 0;
+	while ((str[i] >= '\t' && str[i] <= '\r') || str[i] == ' ')
+		i++;
+	if (str[i] == '-' || str[i] == '+')
+	{
+		if (str[i] == '-')
+			neg *= -1;
+		i++;
+	}
+	while (str[i] >= '0' && str[i] <= '9')
+	{
+		num = num * 10 + (str[i] - 48);
+		i++;
+	}
+	return (num * neg);
 }

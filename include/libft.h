@@ -6,7 +6,7 @@
 /*   By: mgendrot <mgendrot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 11:33:25 by mgendrot          #+#    #+#             */
-/*   Updated: 2024/11/08 13:39:41 by mgendrot         ###   ########.fr       */
+/*   Updated: 2024/11/29 15:04:05 by mgendrot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,17 +20,24 @@
 # include <stdarg.h>
 # include <stdint.h>
 
-# ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 10
-# endif
+# define RED "\033[0;91m"
+# define GREEN "\033[0;92m"
+# define DEF_COLOR "\033[0;39m"
 
-# ifndef FD
-#  define FD 1
-# endif 
+# define TRUE 1
+# define FALSE 0
 
-# ifdef NULL_STR
-#  define NULL_STR "(null)"
-# endif
+typedef enum e_bool
+{
+	E_FALSE,
+	E_TRUE
+}	t_bool;
+
+
+# define BUFFER_SIZE 10
+# define FD 1
+# define NULL_STR "(null)"
+
 typedef struct s_list
 {
 	void			*content;
@@ -89,20 +96,21 @@ void	ft_striteri(char *s, void (*f)(unsigned int, char*));
 
 //ft_to
 int		ft_atoi(const char *str);
+long	ft_atol(const char *str);
 char	*ft_itoa(int n);
 int		ft_toupper(int car);
 int		ft_tolower(int car);
 
-
 // ft_printf 
-int	ft_print_c_fd(char c, int fd);
-int	ft_print_d_fd(int n, int fd);
-int	ft_print_p_fd(uintptr_t ptr, int fd);
-int	ft_print_pct_fd(int fd);
-int	ft_print_s_fd(char *s, int fd);
-int	ft_print_u_fd(unsigned int n, int fd);
-int	ft_print_x_fd(unsigned int n, int format, int fd);
+int		ft_print_c_fd(char c, int fd);
+int		ft_print_d_fd(int n, int fd);
+int		ft_print_p_fd(uintptr_t ptr, int fd);
+int		ft_print_pct_fd(int fd);
+int		ft_print_s_fd(char *s, int fd);
+int		ft_print_u_fd(unsigned int n, int fd);
+int		ft_print_x_fd(unsigned int n, int format, int fd);
 
-int	ft_printf(const char *str, ...);
+int		ft_printf(const char *str, ...);
+int		ft_dprintf(int fd, const char *str, ...);
 
 #endif 
