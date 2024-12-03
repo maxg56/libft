@@ -6,7 +6,7 @@
 /*   By: mgendrot <mgendrot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 11:33:25 by mgendrot          #+#    #+#             */
-/*   Updated: 2024/12/02 15:58:04 by mgendrot         ###   ########.fr       */
+/*   Updated: 2024/12/03 12:46:26 by mgendrot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,10 +46,11 @@ typedef struct s_list
 
 // get_next_line 
 char	*get_next_line(int fd);
-int		ft_strchr_gnl(const char *s, char c);
-size_t	ft_strlcpy_gnl(char *dest, const char *src, size_t n);
-size_t	ft_strlcat_gnl(char *dest, const char *src, size_t n);
-char	*ft_strjoin_gnl(char const *s1, char const *s2);
+int		contains_newline(const char *s);
+char	*join_strs(const char *s1, const char *s2);
+char	*strdup(const char *s1);
+void	*ft_malloc_zero(size_t count, size_t size);
+void	ft_free_strs(char **str, char **str2, char **str3);
 
 // ft_is
 int		ft_isalpha(int car);

@@ -6,110 +6,125 @@
 /*   By: mgendrot <mgendrot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/19 13:43:11 by etaquet           #+#    #+#             */
-/*   Updated: 2024/12/02 15:59:36 by mgendrot         ###   ########.fr       */
+/*   Updated: 2024/12/03 12:46:52 by mgendrot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"	
 
-static char	*nline(char *buffer)
+static char	*get_before_newline(const char *s)
 {
-	int		len;
-	char	*str;
+	char	*res;
 	int		i;
 
-	len = ft_strchr_gnl(buffer, '\n') + 1;
-	if (len <= 0 || !buffer[len - 1])
-	{
-		free(buffer);
-		return (NULL);
-	}
-	str = malloc(ft_strlen(buffer + len) + 1);
-	if (!str)
-	{
-		free(buffer);
-		return (NULL);
-	}
 	i = 0;
-	while (buffer[len])
-		str[i++] = buffer[len++];
-	str[i] = '\0';
-	free(buffer);
-	return (str);
-}
-
-static char	*liner(char *line)
-{
-	int		len;
-	char	*str;
-
-	len = ft_strchr_gnl(line, '\n') + 1;
-	if (len <= 0)
-		len = ft_strlen(line);
-	str = malloc(len + 1);
-	if (!str)
+	while (s[i] != '\0' && s[i] != '\n')
+		i++;
+	if (s[i] != '\0' && s[i] == '\n')
+		i++;
+	res = ft_malloc_zero(i + 1, sizeof * res);
+	if (!res)
 		return (NULL);
-	ft_strlcpy_gnl(str, line, len + 1);
-	return (str);
-}
-
-static char	*append_to_buffer(char *buffer, char *ptr)
-{
-	char	*tmp;
-
-	tmp = buffer;
-	buffer = ft_strjoin_gnl(buffer, ptr);
-	if (!buffer)
+	i = 0;
+	while (s[i] != '\0' && s[i] != '\n')
 	{
-		free(tmp);
-		return (NULL);
+		res[i] = s[i];
+		i++;
 	}
-	free(tmp);
-	return (buffer);
+	if (s[i] == '\n')
+	{
+		res[i] = s[i];
+		i++;
+	}
+	return (res);
 }
 
-static char	*file_read(char *buffer, int fd)
+static char	*get_after_newline(const char *s)
 {
-	char	*ptr;
-	int		nb_read;
+	char	*res;
+	int		i;
+	int		j;
 
-	if (!buffer)
-	{
-		buffer = malloc(1);
-		if (!buffer)
-			return (NULL);
-		buffer[0] = '\0';
-	}
-	ptr = malloc(BUFFER_SIZE + 1);
-	if (!ptr)
+	j = 0;
+	while (s && s[j])
+		j++;
+	i = 0;
+	while (s[i] != '\0' && s[i] != '\n')
+		i++;
+	if (s[i] != '\0' && s[i] == '\n')
+		i++;
+	res = ft_malloc_zero((j - i) + 1, sizeof * res);
+	if (!res)
 		return (NULL);
-	nb_read = read(fd, ptr, BUFFER_SIZE);
-	while (nb_read > 0)
+	j = 0;
+	while (s[i + j])
 	{
-		ptr[nb_read] = '\0';
-		buffer = append_to_buffer(buffer, ptr);
-		if (!buffer || ft_strchr(buffer, '\n') >= 0)
+		res[j] = s[i + j];
+		j++;
+	}
+	return (res);
+}
+
+static void	ft_read_line(int fd, char **keep, char **tmp)
+{
+	char	*buf;
+	int		r;
+
+	buf = malloc(sizeof * buf * (BUFFER_SIZE + 1));
+	if (!buf)
+		return ;
+	r = 1;
+	while (r > 0)
+	{
+		r = read(fd, buf, BUFFER_SIZE);
+		if (r == -1)
+		{
+			ft_free_strs(&buf, keep, tmp);
+			return ;
+		}
+		buf[r] = '\0';
+		*tmp = strdup(*keep);
+		ft_free_strs(keep, 0, 0);
+		*keep = join_strs(*tmp, buf);
+		ft_free_strs(tmp, 0, 0);
+		if (contains_newline(*keep))
 			break ;
-		nb_read = read(fd, ptr, BUFFER_SIZE);
 	}
-	if (nb_read == -1 || (nb_read == 0 && buffer[0] == '\0'))
-		return (free(buffer), free(ptr), NULL);
-	return (free(ptr), buffer);
+	ft_free_strs(&buf, 0, 0);
+}
+
+static char	*ft_parse_line(char **keep, char **tmp)
+{
+	char	*line;
+
+	*tmp = ft_strdup(*keep);
+	ft_free_strs(keep, 0, 0);
+	*keep = get_after_newline(*tmp);
+	line = get_before_newline(*tmp);
+	ft_free_strs(tmp, 0, 0);
+	return (line);
 }
 
 char	*get_next_line(int fd)
 {
-	static char	*buffer;
+	static char	*keep = NULL;
+	char		*tmp;
 	char		*line;
 
 	if (fd < 0 || BUFFER_SIZE <= 0)
+	{
+		ft_free_strs(&keep, NULL, NULL);
 		return (NULL);
-	buffer = file_read(buffer, fd);
-	if (!buffer)
+	}
+	line = NULL;
+	tmp = NULL;
+	ft_read_line(fd, &keep, &tmp);
+	if (keep != NULL && *keep != '\0')
+		line = ft_parse_line(&keep, &tmp);
+	if (!line || *line == '\0')
+	{
+		ft_free_strs(&keep, &line, &tmp);
 		return (NULL);
-	line = liner(buffer);
-	if (!line)
-		return (free(buffer), buffer = NULL, NULL);
-	buffer = nline(buffer);
+	}
 	return (line);
 }

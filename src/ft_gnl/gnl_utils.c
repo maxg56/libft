@@ -5,79 +5,110 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: mgendrot <mgendrot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/02 15:42:56 by mgendrot          #+#    #+#             */
-/*   Updated: 2024/12/02 15:58:19 by mgendrot         ###   ########.fr       */
+/*   Created: 2024/12/03 12:38:09 by mgendrot          #+#    #+#             */
+/*   Updated: 2024/12/03 12:45:57 by mgendrot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-
-
-size_t	ft_strlcpy_gnl(char *dest, const char *src, size_t n)
-{
-	size_t	i;
-
-	if (!dest || !src)
-		return (0);
-	i = 0;
-	while (i < n - 1 && src[i] != '\0')
-	{
-		dest[i] = src[i];
-		i++;
-	}
-	if (n > 0)
-		dest[i] = '\0';
-	return (ft_strlen(src));
-}
-
-size_t	ft_strlcat_gnl(char *dest, const char *src, size_t n)
-{
-	size_t	dest_len;
-	size_t	src_len;
-	size_t	i;
-	size_t	j;
-
-	dest_len = ft_strlen(dest);
-	src_len = ft_strlen(src);
-	if (n <= dest_len)
-		return (n + src_len);
-	i = dest_len;
-	j = 0;
-	while (src[j] && i + 1 < n)
-		dest[i++] = src[j++];
-	dest[i] = '\0';
-	return (dest_len + src_len);
-}
-
-char	*ft_strjoin_gnl(char const *s1, char const *s2)
-{
-	char	*result;
-	size_t	total_len;
-
-	if (!s1 || !s2)
-		return (NULL);
-	total_len = ft_strlen(s1) + ft_strlen(s2) + 1;
-	result = malloc(total_len);
-	if (!result)
-		return (NULL);
-	ft_strlcpy(result, s1, ft_strlen(s1) + 1);
-	ft_strlcat(result, s2, total_len);
-	return (result);
-}
-
-int	ft_strchr_gnl(const char *s, char c)
+int	contains_newline(const char *s)
 {
 	int	i;
 
-	if (!s)
-		return (-1);
 	i = 0;
 	while (s[i])
 	{
-		if (s[i] == c)
-			return (i);
+		if (s[i] == '\n')
+			return (1);
 		i++;
 	}
-	return (-1);
+	return (0);
+}
+
+char	*join_strs(const char *s1, const char *s2)
+{
+	char	*s;
+	int		len;
+	int		i;
+
+	len = 0;
+	if (!s1 && !s2)
+		return (NULL);
+	while (s1 && s1[len])
+		len++;
+	i = 0;
+	while (s2 && s2[i])
+		i++;
+	s = ft_malloc_zero(len + i + 1, sizeof * s);
+	if (!s)
+		return (NULL);
+	len = -1;
+	while (s1 && s1[++len])
+		s[len] = s1[len];
+	i = -1;
+	while (s2 && s2[++i])
+		s[len + i] = s2[i];
+	return (s);
+}
+
+char	*strdup(const char *s1)
+{
+	char	*s2;
+	int		i;
+
+	if (!s1)
+		return (ft_strdup(""));
+	i = 0;
+	while (s1[i])
+		i++;
+	s2 = ft_malloc_zero(i + 1, sizeof * s2);
+	if (!s2)
+		return (NULL);
+	i = 0;
+	while (s1[i])
+	{
+		s2[i] = s1[i];
+		i++;
+	}
+	return (s2);
+}
+
+void	*ft_malloc_zero(size_t count, size_t size)
+{
+	void			*r;
+	unsigned char	*p;
+	size_t			total;
+
+	total = count * size;
+	r = malloc(total);
+	if (!r)
+		return (NULL);
+	p = (unsigned char *)r;
+	while (total != 0)
+	{
+		*p = '\0';
+		p++;
+		total--;
+	}
+	return (r);
+}
+
+void	ft_free_strs(char **str, char **str2, char **str3)
+{
+	if (str && *str)
+	{
+		free(*str);
+		*str = NULL;
+	}
+	if (str2 && *str2)
+	{
+		free(*str2);
+		*str2 = NULL;
+	}
+	if (str3 && *str3)
+	{
+		free(*str3);
+		*str3 = NULL;
+	}
 }
