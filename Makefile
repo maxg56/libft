@@ -6,7 +6,7 @@
 #    By: mgendrot <mgendrot@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/08 13:59:30 by mgendrot          #+#    #+#              #
-#    Updated: 2024/12/04 16:20:32 by mgendrot         ###   ########.fr        #
+#    Updated: 2024/12/09 23:34:10 by mgendrot         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -57,7 +57,7 @@ FTIS_DIR	=	ft_is/
 FTIS		=	ft_isalnum ft_isalpha ft_isascii ft_isdigit ft_isprint
 
 FTMEM_DIR	=	ft_mem/
-FTMEM		=	ft_bzero ft_calloc ft_memchr ft_memcmp ft_memmove ft_memset
+FTMEM		=	ft_bzero ft_calloc ft_memchr ft_memcmp ft_memmove ft_memset ft_memcpy
 
 FTPUT_DIR	=	ft_put/
 FTPUT		=	ft_putchar_fd ft_putendl_fd ft_putnbr_fd ft_putstr_fd
@@ -93,22 +93,23 @@ DEPS            = $(OBJ:.o=.d)
 # **************************************************************************** #
 #                             progress_update                                  #
 # **************************************************************************** #
-TOTAL_FILES      := $(words $(SRC_FILES))
-COMPILED_COUNT    = 0
+
+TOTAL_FILES := $(words $(SRCS))
+
 
 define progress_update
     @if [ ! -f .compiled_count ]; then \
         echo 0 > .compiled_count; \
-		printf "\n"; \
+		printf "\n";\
     fi; \
     COMPILED_COUNT=$$(cat .compiled_count); \
     COMPILED_COUNT=$$((COMPILED_COUNT + 1)); \
     echo $$COMPILED_COUNT > .compiled_count; \
     printf "$(TERM_UP)$(TERM_CLEAR_LINE)$(CYAN)Compilation progress: \
-		$$((COMPILED_COUNT * 100 / $(TOTAL_FILES)))%% $(BLUE) ->$(1) $(DEF_COLOR)\n"; \
-	if [ $$COMPILED_COUNT -eq $(TOTAL_FILES) ]; then \
-		rm -f .compiled_count; \
-	fi
+        $$((COMPILED_COUNT * 100 / $(TOTAL_FILES)))%% $(BLUE) -> $(1) $(DEF_COLOR)\n"; \
+    if [ $$COMPILED_COUNT -eq $(TOTAL_FILES) ]; then \
+        rm -f .compiled_count; \
+    fi
 endef
 
 # **************************************************************************** #
@@ -119,42 +120,41 @@ endef
 
 all:	$(NAME)
 
-$(NAME):	$(OBJS)
+$(NAME): $(OBJS)
 	@${AR} ${NAME} ${OBJS} || exit 1
-	@echo "$(GREEN)Libft compiled!$(DEF_COLOR)"
-
-
-$(OBJ_DIR)%.o: %.c | $(OBJF)
+	@printf "$(GREEN)Libft compiled!$(DEF_COLOR)\n"
+	
+$(OBJ_DIR)%.o: %.c
 	@mkdir -p $(dir $@)
-	$(call progress_update,$(notdir $@))
+	$(call progress_update,$(notdir $@ ))
 	@$(CC) $(CFLAGS) -c $< -o $@ || exit 1
 
 include $(DEPS)
 
 %.d: %.c
-	@$(CC) $(CFLAGS) -MM $< -MF $@
-
-$(OBJF):
-	@$(MKDIR) -p $(OBJ_DIR)
+	@$(CC) $(CFLAGS) -MM $< -MF $@ -s
 
 clean:
 	@if [ -d $(OBJ_DIR) ]; then \
 		$(RM) -r $(OBJ_DIR); \
-		echo "$(RED)libft object files cleaned!$(DEF_COLOR)"; \
+		printf "$(RED)libft object files cleaned!$(DEF_COLOR)\n"; \
 	fi
 
 fclean:	clean
 	@if [ -f $(NAME) ]; then \
 		$(RM) $(NAME); \
-		echo "$(CYAN)libft executable cleaned!$(DEF_COLOR)"; \
+		printf "$(CYAN)libft executable cleaned!$(DEF_COLOR)\n"; \
 	fi
-
+	@if [ -f .compiled_count ]; then \
+			rm -f .compiled_count; \
+	fi;
+		
 re:	fclean all
-	@echo  "$(GREEN)Cleaned and rebuilt everything for libft!$(DEF_COLOR)"
+	@printf  "$(GREEN)Cleaned and rebuilt everything for libft!$(DEF_COLOR)\n"
 
 tests:	all
 	@${CC} ${CFLAGS} tests/.tests.c tests/main.c -L . -l ft  -o ${NAMETESTS}
-	@echo -e "$(GREEN)$(BOLD)tests compiled!$(END)$(DEF_COLOR)""
+	@printf -e "$(GREEN)$(BOLD)tests compiled!$(END)$(DEF_COLOR)/n"
 	./${NAMETESTS}
 	@rm -f ${NAMETESTS}
 
