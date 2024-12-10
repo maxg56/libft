@@ -6,7 +6,7 @@
 #    By: mgendrot <mgendrot@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/08 13:59:30 by mgendrot          #+#    #+#              #
-#    Updated: 2024/12/10 03:39:05 by mgendrot         ###   ########.fr        #
+#    Updated: 2024/12/10 08:39:38 by mgendrot         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -69,7 +69,7 @@ FTSTR_DIR	=	ft_str/
 FTSTR		=	ft_split ft_strchr ft_strdup ft_striteri ft_strjoin \
 				ft_strlcat ft_strlcpy ft_strlen ft_strmapi ft_strncmp \
 				ft_strnstr ft_strrchr ft_strtrim ft_substr ft_strlcpy \
-				ft_strcmp
+				ft_strcmp ft_strjoin3
 
 FTLST_DIR	=	ft_lst/
 FTLST		=	ft_lstadd_back ft_lstadd_front ft_lstclear ft_lstdelone \

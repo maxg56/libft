@@ -6,7 +6,7 @@
 /*   By: mgendrot <mgendrot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 11:33:25 by mgendrot          #+#    #+#             */
-/*   Updated: 2024/12/10 03:37:44 by mgendrot         ###   ########.fr       */
+/*   Updated: 2024/12/10 08:38:57 by mgendrot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,6 +94,7 @@ char	*ft_strtrim(char const *s1, char const *set);
 char	**ft_split(char const *s, char c);
 char	*ft_strmapi(char const *s, char (*f)(unsigned int, char));
 void	ft_striteri(char *s, void (*f)(unsigned int, char*));
+char	*ft_strjoin3(char *s1, char *s2, char *s3);
 
 //ft_to
 int		ft_atoi(const char *str);

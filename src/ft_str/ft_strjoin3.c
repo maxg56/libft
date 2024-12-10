@@ -1,25 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strcmp.c                                        :+:      :+:    :+:   */
+/*   ft_strjoim3.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mgendrot <mgendrot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/10 03:35:57 by mgendrot          #+#    #+#             */
-/*   Updated: 2024/12/10 03:47:50 by mgendrot         ###   ########.fr       */
+/*   Created: 2024/12/10 08:35:29 by mgendrot          #+#    #+#             */
+/*   Updated: 2024/12/10 08:36:36 by mgendrot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_strcmp(const char *s1, const char *s2)
+char	*ft_strjoin3(char *s1, char *s2, char *s3)
 {
-	while (*s1 || *s2)
-	{
-		if (*s1 != *s2)
-			return ((unsigned char)*s1 - (unsigned char)*s2);
-		s1++;
-		s2++;
-	}
-	return (0);
+	char	*res;
+	size_t	len1;
+	size_t	len2;
+	size_t	len3;
+
+	len1 = ft_strlen(s1);
+	len2 = ft_strlen(s2);
+	len3 = ft_strlen(s3);
+	res = malloc(len1 + len2 + len3 + 1);
+	if (!res)
+		return (NULL);
+	ft_memcpy(res, s1, len1);
+	ft_memcpy(res + len1, s2, len2);
+	ft_memcpy(res + len1 + len2, s3, len3 + 1);
+	return (res);
 }
