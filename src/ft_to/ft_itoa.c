@@ -6,7 +6,7 @@
 /*   By: mgendrot <mgendrot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 10:01:48 by mgendrot          #+#    #+#             */
-/*   Updated: 2024/10/17 15:56:59 by mgendrot         ###   ########.fr       */
+/*   Updated: 2024/12/15 00:04:28 by mgendrot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ char	*ft_itoa(int n)
 	unsigned int	num;
 
 	len = get_num_len(n);
-	str = (char *)malloc(sizeof(char) * (len + 1));
+	str = (char *)ft_arna_malloc(sizeof(char) * (len + 1));
 	if (!str)
 		return (NULL);
 	str[len] = '\0';

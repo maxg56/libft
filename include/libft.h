@@ -6,7 +6,7 @@
 /*   By: mgendrot <mgendrot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 11:33:25 by mgendrot          #+#    #+#             */
-/*   Updated: 2024/12/10 08:38:57 by mgendrot         ###   ########.fr       */
+/*   Updated: 2024/12/15 00:06:57 by mgendrot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@
 # include <unistd.h>
 # include <stdarg.h>
 # include <stdint.h>
+
+//# define ft_arna_malloc malloc
 
 # define RED "\033[0;91m"
 # define GREEN "\033[0;92m"
@@ -71,6 +73,9 @@ void	*ft_memchr(const void *s, int c, size_t n);
 void	*ft_memmove(void *dst, const void *src, size_t len);
 void	*ft_memset(void *pointer, int value, size_t count );
 void	*ft_memcpy(void *dst, const void *src, size_t n);
+void	*ft_arna_malloc(size_t size);
+void	ft_arna_free_all(void);
+void	ft_arna_free(void);
 
 // ft_put
 void	ft_putchar_fd(char c, int fd);

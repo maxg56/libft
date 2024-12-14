@@ -6,7 +6,7 @@
 /*   By: mgendrot <mgendrot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 10:30:23 by mgendrot          #+#    #+#             */
-/*   Updated: 2024/10/25 17:07:16 by mgendrot         ###   ########.fr       */
+/*   Updated: 2024/12/15 00:04:28 by mgendrot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 	if (!s)
 		return (NULL);
 	i = 0;
-	str = (char *)malloc(sizeof(char) * (ft_strlen(s)) + 1);
+	str = (char *)ft_arna_malloc(sizeof(char) * (ft_strlen(s)) + 1);
 	if (!str)
 		return (NULL);
 	while (s[i] != '\0')

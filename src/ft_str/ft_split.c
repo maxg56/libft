@@ -6,7 +6,7 @@
 /*   By: mgendrot <mgendrot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 10:07:29 by mgendrot          #+#    #+#             */
-/*   Updated: 2024/10/25 11:44:55 by mgendrot         ###   ########.fr       */
+/*   Updated: 2024/12/15 00:12:27 by mgendrot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 static int	count_word(char const *s, char c);
 static int	ft_strlen_c(char *str, char c);
-static char	**free_arr(int i, char **arr);
 
 char	**ft_split(char const *s, char c)
 {
@@ -27,7 +26,7 @@ char	**ft_split(char const *s, char c)
 		return (NULL);
 	i = 0;
 	words = count_word(s, c);
-	split = malloc(sizeof(char *) * (words + 1));
+	split = ft_arna_malloc(sizeof(char *) * (words + 1));
 	if (!split)
 		return (NULL);
 	while (i < words)
@@ -36,8 +35,6 @@ char	**ft_split(char const *s, char c)
 			s++;
 		len = ft_strlen_c((char *) s, c);
 		split[i] = ft_substr(s, 0, len);
-		if (!split[i])
-			return (free_arr(i, split));
 		s += len;
 		i++;
 	}
@@ -74,10 +71,4 @@ static int	ft_strlen_c(char *str, char c)
 	return (i);
 }
 
-static char	**free_arr(int i, char **split)
-{
-	while (i > 0)
-		free(split[--i]);
-	free(split);
-	return (NULL);
-}
+

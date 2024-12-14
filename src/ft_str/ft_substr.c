@@ -6,7 +6,7 @@
 /*   By: mgendrot <mgendrot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/16 13:35:42 by mgendrot          #+#    #+#             */
-/*   Updated: 2024/10/24 13:42:14 by mgendrot         ###   ########.fr       */
+/*   Updated: 2024/12/15 00:04:28 by mgendrot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 		return (ft_strdup(""));
 	if (len > ft_strlen(s) - start)
 		len = ft_strlen(s) - start;
-	str = (char *)malloc(sizeof(char) * (len + 1));
+	str = (char *)ft_arna_malloc(sizeof(char) * (len + 1));
 	if (!str || !s)
 		return (NULL);
 	i = 0;

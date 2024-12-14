@@ -6,7 +6,7 @@
 #    By: mgendrot <mgendrot@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/08 13:59:30 by mgendrot          #+#    #+#              #
-#    Updated: 2024/12/10 08:39:38 by mgendrot         ###   ########.fr        #
+#    Updated: 2024/12/15 00:11:03 by mgendrot         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -57,7 +57,8 @@ FTIS_DIR	=	ft_is/
 FTIS		=	ft_isalnum ft_isalpha ft_isascii ft_isdigit ft_isprint
 
 FTMEM_DIR	=	ft_mem/
-FTMEM		=	ft_bzero ft_calloc ft_memchr ft_memcmp ft_memmove ft_memset ft_memcpy
+FTMEM		=	ft_bzero ft_calloc ft_memchr ft_memcmp ft_memmove ft_memset \
+				ft_memcpy ft_arna
 
 FTPUT_DIR	=	ft_put/
 FTPUT		=	ft_putchar_fd ft_putendl_fd ft_putnbr_fd ft_putstr_fd

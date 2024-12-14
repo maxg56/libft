@@ -6,7 +6,7 @@
 /*   By: mgendrot <mgendrot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/15 15:29:59 by mgendrot          #+#    #+#             */
-/*   Updated: 2024/10/23 11:50:15 by mgendrot         ###   ########.fr       */
+/*   Updated: 2024/12/15 00:04:28 by mgendrot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ char	*ft_strdup(char *src)
 	int		i;
 
 	i = 0;
-	copi = malloc((ft_strlen(src) + 1) * sizeof(char));
+	copi = ft_arna_malloc((ft_strlen(src) + 1) * sizeof(char));
 	if (!copi)
 		return (NULL);
 	while (src[i])

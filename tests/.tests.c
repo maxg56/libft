@@ -6,7 +6,7 @@
 /*   By: mgendrot <mgendrot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 12:24:04 by mgendrot          #+#    #+#             */
-/*   Updated: 2024/10/30 15:15:06 by mgendrot         ###   ########.fr       */
+/*   Updated: 2024/12/14 23:21:07 by mgendrot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ void test_ft_calloc() {
         printf("%d ", arr[i]); // Devrait imprimer 0 0 0 0 0
     }
     printf("\n");
-    free(arr);
+    
 }
 
 // Fonction de test pour ft_memchr
@@ -120,7 +120,7 @@ void test_ft_strchr() {
 void test_ft_strdup() {
     char *dup = ft_strdup("Hello");
     printf("Testing ft_strdup: %s\n", dup); // Devrait imprimer "Hello"
-    free(dup);
+    
 }
 
 // Fonction de test pour ft_strlcat
@@ -201,19 +201,19 @@ void    test_ft_strtrim(void)
 	printf( "ft_strtrim\n");
 	p = ft_strtrim(" h  -     ", " -");
 	printf( "%s : h\n",p);
-	free(p);
+	
 	p = ft_strtrim("Hello", " ");
 	printf( "%s : Hello \n",p);
-	free(p);
+	
 	p = ft_strtrim("Hello", "l ");
 	printf( "%s : Hello\n",p);
-	free(p);
+	
 	p = ft_strtrim("", "l");
 	printf( "%s : \n",p);
-	free(p);
+	
 	p = ft_strtrim("Hello", "Hello");
 	printf( "%s : \n",p);
-	free(p);
+	
 }
 void	test_ft_itoa(void)
 {
@@ -244,7 +244,7 @@ void	test_ft_strmapi(void)
 	if (result)
 	{
 		printf("Résultat : %s\n", result);
-		free(result);
+		
 	}
 }
 
