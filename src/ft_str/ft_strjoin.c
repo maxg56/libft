@@ -6,7 +6,7 @@
 /*   By: mgendrot <mgendrot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/16 14:08:12 by mgendrot          #+#    #+#             */
-/*   Updated: 2024/12/15 00:04:28 by mgendrot         ###   ########.fr       */
+/*   Updated: 2024/12/15 01:26:33 by mgendrot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	{
 		len1 = ft_strlen(s1);
 		len2 = ft_strlen(s2);
-		str = (char *)ft_arna_malloc(sizeof(char) * (len1 + len2 + 1));
+		str = (char *)ft_arnalloc(sizeof(char) * (len1 + len2 + 1));
 		if (!str)
 			return (NULL);
 		i = -1;

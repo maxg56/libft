@@ -6,7 +6,7 @@
 /*   By: mgendrot <mgendrot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 10:07:29 by mgendrot          #+#    #+#             */
-/*   Updated: 2024/12/15 00:12:27 by mgendrot         ###   ########.fr       */
+/*   Updated: 2024/12/15 01:26:33 by mgendrot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ char	**ft_split(char const *s, char c)
 		return (NULL);
 	i = 0;
 	words = count_word(s, c);
-	split = ft_arna_malloc(sizeof(char *) * (words + 1));
+	split = ft_arnalloc(sizeof(char *) * (words + 1));
 	if (!split)
 		return (NULL);
 	while (i < words)
