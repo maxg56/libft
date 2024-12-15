@@ -6,7 +6,7 @@
 /*   By: mgendrot <mgendrot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 11:33:25 by mgendrot          #+#    #+#             */
-/*   Updated: 2024/12/15 01:26:33 by mgendrot         ###   ########.fr       */
+/*   Updated: 2024/12/15 01:31:57 by mgendrot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,6 @@ void	*ft_memmove(void *dst, const void *src, size_t len);
 void	*ft_memset(void *pointer, int value, size_t count );
 void	*ft_memcpy(void *dst, const void *src, size_t n);
 void	*ft_arnalloc(size_t size);
-void	ft_arna_free_all(void);
 void	ft_arna_free(void);
 
 // ft_put

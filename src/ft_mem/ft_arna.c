@@ -6,7 +6,7 @@
 /*   By: mgendrot <mgendrot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/14 23:01:35 by mgendrot          #+#    #+#             */
-/*   Updated: 2024/12/15 01:29:37 by mgendrot         ###   ########.fr       */
+/*   Updated: 2024/12/15 21:56:06 by mgendrot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,6 @@ void	*ft_arnalloc( size_t saze)
 	return (allocated);
 }
 
-
 void	ft_arna_free(void)
 {
 	t_list	*arna;
@@ -74,4 +73,3 @@ void	ft_arna_free(void)
 		tmp = NULL;
 	}
 }
-

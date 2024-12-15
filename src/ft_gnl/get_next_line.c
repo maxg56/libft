@@ -6,7 +6,7 @@
 /*   By: mgendrot <mgendrot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/19 13:43:11 by etaquet           #+#    #+#             */
-/*   Updated: 2024/12/15 01:26:33 by mgendrot         ###   ########.fr       */
+/*   Updated: 2024/12/15 21:59:56 by mgendrot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,6 @@ static char	*function_name(int fd, char *buf, char *backup)
 			backup = ft_strdup("");
 		char_temp = backup;
 		backup = ft_strjoin(char_temp, buf);
-		
 		char_temp = NULL;
 		if (ft_strchr (buf, '\n'))
 			break ;
@@ -50,10 +49,7 @@ static char	*extract(char *line)
 		return (0);
 	backup = ft_substr(line, count + 1, ft_strlen(line) - count);
 	if (*backup == '\0')
-	{
-		
 		backup = NULL;
-	}
 	line[count + 1] = '\0';
 	return (backup);
 }
@@ -70,7 +66,6 @@ char	*get_next_line(int fd)
 	if (!buf)
 		return (0);
 	line = function_name(fd, buf, backup);
-	
 	buf = NULL;
 	if (!line)
 		return (NULL);
