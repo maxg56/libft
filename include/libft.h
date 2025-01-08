@@ -6,7 +6,7 @@
 /*   By: mgendrot <mgendrot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 11:33:25 by mgendrot          #+#    #+#             */
-/*   Updated: 2024/12/15 01:31:57 by mgendrot         ###   ########.fr       */
+/*   Updated: 2025/01/08 18:53:51 by mgendrot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,6 @@ typedef enum e_bool
 	E_TRUE
 }	t_bool;
 
-
 # define BUFFER_SIZE 10
 # define FD 1
 # define NULL_STR "(null)"
@@ -48,6 +47,7 @@ typedef struct s_list
 
 // get_next_line 
 char	*get_next_line(int fd);
+char	*arn_get_next_line(int fd);
 
 // ft_is
 int		ft_isalpha(int car);
@@ -56,6 +56,7 @@ int		ft_isprint(int car );
 int		ft_isascii(int car );
 int		ft_isalnum(int car);
 // ft_lst
+t_list	*ft_arn_lstnew(void *content);
 t_list	*ft_lstnew(void *content);
 int		ft_lstsize(t_list *lst);
 void	ft_lstadd_front(t_list **lst, t_list *new);
@@ -69,6 +70,7 @@ t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
 int		ft_memcmp(const void *s1, const void *s2, size_t n);
 void	ft_bzero(void *b, size_t n);
 void	*ft_calloc(size_t count, size_t size );
+void	*ft_arn_calloc(size_t count, size_t size);
 void	*ft_memchr(const void *s, int c, size_t n);
 void	*ft_memmove(void *dst, const void *src, size_t len);
 void	*ft_memset(void *pointer, int value, size_t count );
@@ -99,11 +101,18 @@ char	**ft_split(char const *s, char c);
 char	*ft_strmapi(char const *s, char (*f)(unsigned int, char));
 void	ft_striteri(char *s, void (*f)(unsigned int, char*));
 char	*ft_strjoin3(char *s1, char *s2, char *s3);
+char	*ft_arn_strmapi(char const *s, char (*f)(unsigned int, char));
+char	*ft_arn_strjoin(char const *s1, char const *s2);
+char	*ft_arn_strjoin3(char *s1, char *s2, char *s3);
+char	*ft_arn_substr(char const *s, unsigned int start, size_t len);
+char	*ft_arn_split(char const *s, char c);
+char	*ft_arn_strdup(char *src);
 
 //ft_to
 int		ft_atoi(const char *str);
 long	ft_atol(const char *str);
 char	*ft_itoa(int n);
+char	*ft_arn_itoa(int n);
 int		ft_toupper(int car);
 int		ft_tolower(int car);
 

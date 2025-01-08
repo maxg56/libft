@@ -6,7 +6,7 @@
 /*   By: mgendrot <mgendrot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/19 13:43:11 by etaquet           #+#    #+#             */
-/*   Updated: 2024/12/15 21:59:56 by mgendrot         ###   ########.fr       */
+/*   Updated: 2025/01/08 11:03:28 by mgendrot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ static char	*extract(char *line)
 	return (backup);
 }
 
-char	*get_next_line(int fd)
+char	*arn_get_next_line(int fd)
 {
 	char		*line;
 	char		*buf;
@@ -66,6 +66,26 @@ char	*get_next_line(int fd)
 	if (!buf)
 		return (0);
 	line = function_name(fd, buf, backup);
+	buf = NULL;
+	if (!line)
+		return (NULL);
+	backup = extract(line);
+	return (line);
+}
+
+char	*get_next_line(int fd)
+{
+	char		*line;
+	char		*buf;
+	static char	*backup;
+
+	if (fd < 0 || BUFFER_SIZE <= 0)
+		return (0);
+	buf = (char *)malloc(sizeof(char) * (BUFFER_SIZE + 1));
+	if (!buf)
+		return (0);
+	line = function_name(fd, buf, backup);
+	free(buf);
 	buf = NULL;
 	if (!line)
 		return (NULL);
