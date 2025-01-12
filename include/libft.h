@@ -6,7 +6,7 @@
 /*   By: mgendrot <mgendrot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 11:33:25 by mgendrot          #+#    #+#             */
-/*   Updated: 2025/01/08 18:57:49 by mgendrot         ###   ########.fr       */
+/*   Updated: 2025/01/12 16:56:45 by mgendrot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@
 # define TRUE 1
 # define FALSE 0
 
+# define ARNA_TAB_MAX 10
 typedef enum e_bool
 {
 	E_FALSE,

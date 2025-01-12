@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*   arn_get_next_line.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mgendrot <mgendrot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/19 13:43:11 by etaquet           #+#    #+#             */
-/*   Updated: 2025/01/12 16:44:56 by mgendrot         ###   ########.fr       */
+/*   Created: 2025/01/12 16:41:50 by mgendrot          #+#    #+#             */
+/*   Updated: 2025/01/12 16:48:19 by mgendrot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"	
+#include "libft.h"
 
 static char	*function_name(int fd, char *buf, char *backup)
 {
@@ -27,9 +27,9 @@ static char	*function_name(int fd, char *buf, char *backup)
 			break ;
 		buf[read_line] = '\0';
 		if (!backup)
-			backup = ft_strdup("");
+			backup = ft_arn_strdup("");
 		char_temp = backup;
-		backup = ft_strjoin(char_temp, buf);
+		backup = ft_arn_strjoin(char_temp, buf);
 		char_temp = NULL;
 		if (ft_strchr (buf, '\n'))
 			break ;
@@ -47,14 +47,14 @@ static char	*extract(char *line)
 		count++;
 	if (line[count] == '\0' || line[1] == '\0')
 		return (0);
-	backup = ft_substr(line, count + 1, ft_strlen(line) - count);
+	backup = ft_arn_substr(line, count + 1, ft_strlen(line) - count);
 	if (*backup == '\0')
 		backup = NULL;
 	line[count + 1] = '\0';
 	return (backup);
 }
 
-char	*get_next_line(int fd)
+char	*arn_get_next_line(int fd)
 {
 	char		*line;
 	char		*buf;
@@ -62,14 +62,26 @@ char	*get_next_line(int fd)
 
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (0);
-	buf = (char *)malloc(sizeof(char) * (BUFFER_SIZE + 1));
+	buf = (char *)ft_arnalloc(sizeof(char) * (BUFFER_SIZE + 1));
 	if (!buf)
 		return (0);
 	line = function_name(fd, buf, backup);
-	free(buf);
 	buf = NULL;
 	if (!line)
 		return (NULL);
 	backup = extract(line);
 	return (line);
+}
+
+int main(void)
+{
+	int fd;
+	char *line;
+
+	while ((line = arn_get_next_line(0)))
+	{
+		ft_putendl_fd(line, 1);
+	}
+	
+	ft_arna_free();
 }
