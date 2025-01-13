@@ -6,7 +6,7 @@
 /*   By: mgendrot <mgendrot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/14 23:01:35 by mgendrot          #+#    #+#             */
-/*   Updated: 2025/01/12 16:36:26 by mgendrot         ###   ########.fr       */
+/*   Updated: 2025/01/13 14:04:12 by mgendrot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ static t_list	**ft_arnalloc_orig(void)
 
 	if (arna == NULL)
 	{
-		arna = ft_lstnew_malloc(malloc(64000));
+		arna = ft_lstnew_malloc(malloc(ARNA_SIZE));
 		if (arna == NULL )
 			return (NULL);
 	}
@@ -42,11 +42,13 @@ void	*ft_arnalloc( size_t saze)
 	t_list			**arna;
 	void			*allocated;
 	static size_t	i = 0;
-	size_t	saze_aloc = 64000;
+	static size_t	saze_aloc = ARNA_SIZE;
 
 	arna = ft_arnalloc_orig();
 	if (saze + i > saze_aloc)
 	{
+		if (saze_aloc > ARNA_SIZE)
+			saze_aloc = ARNA_SIZE;
 		while (saze > saze_aloc)
 			saze_aloc *= 2;
 		ft_lstadd_front(arna, ft_lstnew(malloc(saze_aloc)));

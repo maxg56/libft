@@ -6,7 +6,7 @@
 #    By: mgendrot <mgendrot@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/08 13:59:30 by mgendrot          #+#    #+#              #
-#    Updated: 2025/01/12 16:45:20 by mgendrot         ###   ########.fr        #
+#    Updated: 2025/01/13 11:29:00 by mgendrot         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -45,58 +45,21 @@ TERM_CLEAR_LINE		=   \033[2K\r
 #                                   Sources                                    #
 # **************************************************************************** #
 
-FTPRINTF_DIR     =  ft_printf/
-FTPRINT       	=   ft_printf ft_print_c_fd ft_print_d_fd ft_print_x_fd \
-					ft_print_s_fd ft_print_p_fd ft_print_u_fd ft_print_pct_fd \
-					ft_dprintf
-
-FTGNL_DIR	=	ft_gnl/
-FTGNL		=	get_next_line arn_get_next_line
-
-FTIS_DIR	=	ft_is/
-FTIS		=	ft_isalnum ft_isalpha ft_isascii ft_isdigit ft_isprint
-
-FTMEM_DIR	=	ft_mem/
-FTMEM		=	ft_bzero ft_calloc ft_memchr ft_memcmp ft_memmove ft_memset \
-				ft_memcpy ft_arna
-
-FTPUT_DIR	=	ft_put/
-FTPUT		=	ft_putchar_fd ft_putendl_fd ft_putnbr_fd ft_putstr_fd
-
-FTTO_DIR	=	ft_to/
-FTTO		=	ft_atoi ft_itoa ft_tolower ft_toupper ft_atol
-
-FTSTR_DIR	=	ft_str/
-FTSTR		=	ft_split ft_strchr ft_strdup ft_striteri ft_strjoin \
-				ft_strlcat ft_strlcpy ft_strlen ft_strmapi ft_strncmp \
-				ft_strnstr ft_strrchr ft_strtrim ft_substr ft_strlcpy \
-				ft_strcmp ft_strjoin3
-
-FTLST_DIR	=	ft_lst/
-FTLST		=	ft_lstadd_back ft_lstadd_front ft_lstclear ft_lstdelone \
-				ft_lstiter ft_lstlast ft_lstmap ft_lstnew ft_lstsize
+include Sources.mk
 
 # **************************************************************************** #
 #                                   OBJS                                       #
 # **************************************************************************** #
 
-SRCS_DIR        = src/
-OBJ_DIR         = obj/
-
-SRC_FILES       = $(addprefix $(FTPRINTF_DIR),$(FTPRINT)) $(addprefix $(FTGNL_DIR),$(FTGNL)) \
-                  $(addprefix $(FTIS_DIR),$(FTIS)) $(addprefix $(FTPUT_DIR),$(FTPUT)) \
-                  $(addprefix $(FTMEM_DIR),$(FTMEM)) $(addprefix $(FTTO_DIR),$(FTTO)) \
-                  $(addprefix $(FTSTR_DIR),$(FTSTR)) $(addprefix $(FTLST_DIR),$(FTLST))
-
-SRCS            = $(addprefix $(SRCS_DIR), $(addsuffix .c, $(SRC_FILES)))
-OBJS            = $(patsubst %.c, $(OBJ_DIR)%.o, $(SRCS))
+obj_dir = obj/
+OBJS            = $(patsubst %.c, $(OBJ_DIR)%.o, $(SRC_FILES))
 DEPS            = $(OBJ:.o=.d)
 
 # **************************************************************************** #
 #                             progress_update                                  #
 # **************************************************************************** #
 
-TOTAL_FILES := $(words $(SRCS))
+TOTAL_FILES := $(words $(SRC_FILES))
 
 
 define progress_update

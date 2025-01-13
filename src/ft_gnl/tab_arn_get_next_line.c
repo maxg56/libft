@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   arn_get_next_line.c                                :+:      :+:    :+:   */
+/*   tab_arn_get_next_line.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mgendrot <mgendrot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/12 16:41:50 by mgendrot          #+#    #+#             */
-/*   Updated: 2025/01/13 10:52:23 by mgendrot         ###   ########.fr       */
+/*   Updated: 2025/01/13 14:51:31 by mgendrot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ static char	*function_name(int fd, char *buf, char *backup)
 		if (!backup)
 			backup = ft_arn_strdup("");
 		char_temp = backup;
-		backup = ft_arn_strjoin(char_temp, buf);
+		backup = ft_arn_tab_strjoin(char_temp, buf);
 		char_temp = NULL;
 		if (ft_strchr (buf, '\n'))
 			break ;
@@ -47,14 +47,14 @@ static char	*extract(char *line)
 		count++;
 	if (line[count] == '\0' || line[1] == '\0')
 		return (0);
-	backup = ft_arn_substr(line, count + 1, ft_strlen(line) - count);
+	backup = ft_arn_tab_substr(line, count + 1, ft_strlen(line) - count);
 	if (*backup == '\0')
 		backup = NULL;
 	line[count + 1] = '\0';
 	return (backup);
 }
 
-char	*arn_get_next_line(int fd)
+char	*arn_tab_get_next_line(int fd)
 {
 	char		*line;
 	char		*buf;
@@ -62,7 +62,7 @@ char	*arn_get_next_line(int fd)
 
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (0);
-	buf = (char *)ft_arnalloc(sizeof(char) * (BUFFER_SIZE + 1));
+	buf = (char *)ft_tab_arnalloc(sizeof(char) * (BUFFER_SIZE + 1));
 	if (!buf)
 		return (0);
 	line = function_name(fd, buf, backup);
