@@ -6,7 +6,7 @@
 /*   By: mgendrot <mgendrot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 10:01:48 by mgendrot          #+#    #+#             */
-/*   Updated: 2025/01/14 15:29:56 by mgendrot         ###   ########.fr       */
+/*   Updated: 2025/01/14 16:36:40 by mgendrot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,21 +66,7 @@ char	*ft_arn_itoa(int n)
 	str[len] = '\0';
 	if (n < 0)
 	{
-		num = -n;	char *allocated_memory = allocate_from_pool(64000);
-	get_current_pool_index(2);
-	allocated_memory = allocate_from_pool(64000);
-	if (!allocated_memory)
-		return 1;
-	ft_arn_tab_substr("Hello World", 0, 5);
-	// Utilisation de la mémoire allouée
-	free_memory_pool_line(2);
-	ft_arn_tab_calloc(10, 10);
-	allocated_memory = allocate_from_pool(64000);
-	get_current_pool_index(1);
-	allocated_memory = allocate_from_pool(700000000);
-	free_memory_pool();
-		return 0;
-}
+		num = -n;
 		str[0] = '-';
 	}
 	else
