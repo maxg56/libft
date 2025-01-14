@@ -6,12 +6,11 @@
 /*   By: mgendrot <mgendrot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/12 16:55:46 by mgendrot          #+#    #+#             */
-/*   Updated: 2025/01/14 15:20:14 by mgendrot         ###   ########.fr       */
+/*   Updated: 2025/01/14 16:50:25 by mgendrot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-
 
 // Fonction pour créer un nouveau nœud de liste
 t_list	*create_list_node(void *content)
@@ -34,7 +33,6 @@ t_list	***get_memory_pool(void)
 
 	if (!pool)
 	{
-
 		i = 0;
 		pool = malloc(sizeof(t_list *) * MEMORY_POOL_MAX);
 		if (!pool)

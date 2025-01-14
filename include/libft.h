@@ -6,7 +6,7 @@
 /*   By: mgendrot <mgendrot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 11:33:25 by mgendrot          #+#    #+#             */
-/*   Updated: 2025/01/14 15:20:23 by mgendrot         ###   ########.fr       */
+/*   Updated: 2025/01/14 16:51:07 by mgendrot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,8 @@
 
 # define ARNA_TAB_MAX 10
 # define ARNA_SIZE 64000
-#define MEMORY_POOL_MAX 1024 // Ancien ARNA_TAB_MAX
-#define DEFAULT_BLOCK_SIZE 64000 // Ancien ARNA_SIZE
+# define MEMORY_POOL_MAX 1024
+# define DEFAULT_BLOCK_SIZE 64000
 
 typedef enum e_bool
 {

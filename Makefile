@@ -6,7 +6,7 @@
 #    By: mgendrot <mgendrot@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/08 13:59:30 by mgendrot          #+#    #+#              #
-#    Updated: 2025/01/13 11:29:00 by mgendrot         ###   ########.fr        #
+#    Updated: 2025/01/14 16:47:43 by mgendrot         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -51,7 +51,7 @@ include Sources.mk
 #                                   OBJS                                       #
 # **************************************************************************** #
 
-obj_dir = obj/
+OBJ_DIR = obj/
 OBJS            = $(patsubst %.c, $(OBJ_DIR)%.o, $(SRC_FILES))
 DEPS            = $(OBJ:.o=.d)
 

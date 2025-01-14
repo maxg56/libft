@@ -6,7 +6,7 @@
 /*   By: mgendrot <mgendrot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 10:59:14 by mgendrot          #+#    #+#             */
-/*   Updated: 2025/01/14 15:15:03 by mgendrot         ###   ########.fr       */
+/*   Updated: 2025/01/14 16:49:20 by mgendrot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,4 +61,3 @@ void	*free_memory_pool_line(int index)
 	pool[index] = create_list_node(malloc(1));
 	return (NULL);
 }
-
