@@ -6,86 +6,108 @@
 /*   By: mgendrot <mgendrot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/12 16:55:46 by mgendrot          #+#    #+#             */
-/*   Updated: 2025/01/13 14:09:56 by mgendrot         ###   ########.fr       */
+/*   Updated: 2025/01/14 15:20:14 by mgendrot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static t_list	*ft_lstnew_malloc(void *content)
-{
-	t_list	*new;
 
-	new = malloc(sizeof(t_list));
-	if (new == NULL)
+// Fonction pour créer un nouveau nœud de liste
+t_list	*create_list_node(void *content)
+{
+	t_list	*new_node;
+
+	new_node = malloc(sizeof(t_list));
+	if (!new_node)
 		return (NULL);
-	new->content = content;
-	new->next = NULL;
-	return (new);
+	new_node->content = content;
+	new_node->next = NULL;
+	return (new_node);
 }
 
-t_list	***ft_arnalloc_tab__orig(void)
+// Récupère le tableau de mémoire statique
+t_list	***get_memory_pool(void)
 {
+	static t_list	**pool = NULL;
 	int				i;
-	static t_list	**arna = NULL;
 
-	i = 0;
-	if (arna == NULL)
+	if (!pool)
 	{
-		arna = (t_list **)malloc(sizeof(t_list *) * ARNA_TAB_MAX);
-		if (arna == NULL)
-			return (NULL);
-		while (i < ARNA_TAB_MAX)
-			arna[i++] = NULL;
-	}
-	return (&arna);
-}
 
-t_list	**ft_arnalloc_tab_line(int i)
-{
-	t_list	**arna;
-
-	arna = *ft_arnalloc_tab__orig();
-	if (arna[i] == NULL)
-	{
-		arna[i] = ft_lstnew_malloc(malloc(ARNA_SIZE));
-		if (arna[i] == NULL )
-			return (NULL);
-	}
-	return (&arna[i]);
-}
-
-int	get_arna_tad(int i_tad)
-{
-	static int	i = 0;
-
-	if (i_tad < -1)
-		return (0);
-	else if (i_tad != -1)
-		return (i);
-	else if (i_tad != i)
-		i = i_tad;
-	return (i);
-}
-
-void	*ft_tab_arnalloc( size_t saze)
-{
-	t_list			**arna;
-	void			*allocated;
-	static size_t	saze_aloc = ARNA_SIZE;
-	static size_t	i = 0;
-
-	arna = ft_arnalloc_tab_line(get_arna_tad(-1));
-	if (saze + i > saze_aloc)
-	{
-		if (saze_aloc > ARNA_SIZE)
-			saze_aloc = ARNA_SIZE;
-		while (saze > saze_aloc)
-			saze_aloc *= 2;
-		ft_lstadd_front(arna, ft_lstnew(malloc(saze_aloc)));
 		i = 0;
+		pool = malloc(sizeof(t_list *) * MEMORY_POOL_MAX);
+		if (!pool)
+			return (NULL);
+		while (i < MEMORY_POOL_MAX)
+		{
+			pool[i] = NULL;
+			i++;
+		}
 	}
-	allocated = (void *)((uintptr_t)((*arna)->content) + i);
-	i += saze;
-	return (allocated);
+	return (&pool);
+}
+
+// Récupère une ligne du tableau de mémoire
+static t_list	**get_memory_pool_line(int index)
+{
+	t_list	**pool;
+	void	*new_block;
+
+	pool = *get_memory_pool();
+	if (!pool)
+		return (NULL);
+	if (!pool[index])
+	{
+		new_block = malloc(1);
+		if (!new_block)
+			return (NULL);
+		pool[index] = create_list_node(new_block);
+		if (!pool[index])
+			return (NULL);
+	}
+	return (&pool[index]);
+}
+
+// Gestion de l'indice courant du pool
+int	get_current_pool_index(int new_index)
+{
+	static int	current_index ;
+
+	current_index = 0;
+	if (new_index < -1)
+		return (0);
+	else if (new_index == -1)
+		return (current_index);
+	current_index = new_index;
+	return (current_index);
+}
+
+// Allocation de mémoire depuis le pool
+void	*allocate_from_pool(size_t size)
+{
+	static size_t	current_offset = 0;
+	static size_t	current_block_size = DEFAULT_BLOCK_SIZE;
+	t_list			**current_line;
+	t_list			*new_block;
+	void			*allocated_memory;
+
+	current_line = get_memory_pool_line(get_current_pool_index(-1));
+	if (!current_line)
+		return (NULL);
+	if (current_offset + size > current_block_size)
+	{
+		while (size > current_block_size)
+			current_block_size *= 2;
+		new_block = create_list_node(malloc(current_block_size));
+		if (!new_block)
+			return (NULL);
+		new_block->next = *current_line;
+		*current_line = new_block;
+		current_offset = 0;
+	}
+	allocated_memory = (void *)((uintptr_t)((*current_line)->content) + \
+	current_offset);
+	current_offset += size;
+	return (allocated_memory);
 }

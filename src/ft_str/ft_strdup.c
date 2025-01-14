@@ -6,7 +6,7 @@
 /*   By: mgendrot <mgendrot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/15 15:29:59 by mgendrot          #+#    #+#             */
-/*   Updated: 2025/01/13 13:31:02 by mgendrot         ###   ########.fr       */
+/*   Updated: 2025/01/14 14:59:58 by mgendrot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ char	*ft_arn_tab_strdup(char *src)
 	int		i;
 
 	i = 0;
-	copi = ft_tab_arnalloc((ft_strlen(src) + 1) * sizeof(char));
+	copi = allocate_from_pool((ft_strlen(src) + 1) * sizeof(char));
 	if (!copi)
 		return (NULL);
 	while (src[i])

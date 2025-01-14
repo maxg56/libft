@@ -6,7 +6,7 @@
 /*   By: mgendrot <mgendrot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 11:33:25 by mgendrot          #+#    #+#             */
-/*   Updated: 2025/01/13 14:48:54 by mgendrot         ###   ########.fr       */
+/*   Updated: 2025/01/14 15:20:23 by mgendrot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,8 @@
 
 # define ARNA_TAB_MAX 10
 # define ARNA_SIZE 64000
+#define MEMORY_POOL_MAX 1024 // Ancien ARNA_TAB_MAX
+#define DEFAULT_BLOCK_SIZE 64000 // Ancien ARNA_SIZE
 
 typedef enum e_bool
 {
@@ -83,12 +85,13 @@ void	*ft_memcpy(void *dst, const void *src, size_t n);
 void	*ft_arnalloc(size_t size);
 void	ft_arna_free(void);
 
-t_list	***ft_arnalloc_tab__orig(void);
-t_list	**ft_arnalloc_tab_line(int i);
-int		get_arna_tad(int i_tad);
-void	*ft_tab_arnalloc(size_t size);
-void	ft_arna_tab_free(int i);
-void	ft_arna_tab_free_free(void);
+// ft_arna_tab
+void	*free_memory_pool_line(int index);
+void	free_memory_pool(void);
+int		get_current_pool_index(int new_index);
+void	*allocate_from_pool(size_t size);
+t_list	***get_memory_pool(void);
+t_list	*create_list_node(void *content);
 
 // ft_put
 void	ft_putchar_fd(char c, int fd);

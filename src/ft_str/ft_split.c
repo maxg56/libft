@@ -6,7 +6,7 @@
 /*   By: mgendrot <mgendrot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 10:07:29 by mgendrot          #+#    #+#             */
-/*   Updated: 2025/01/13 14:48:21 by mgendrot         ###   ########.fr       */
+/*   Updated: 2025/01/14 14:59:58 by mgendrot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ char	**ft_arn_tab_split(char const *s, char c)
 		return (NULL);
 	i = 0;
 	words = count_word(s, c);
-	split = ft_tab_arnalloc(sizeof(char *) * (words + 1));
+	split = allocate_from_pool(sizeof(char *) * (words + 1));
 	if (!split)
 		return (NULL);
 	while (i < words)

@@ -6,43 +6,59 @@
 /*   By: mgendrot <mgendrot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 10:59:14 by mgendrot          #+#    #+#             */
-/*   Updated: 2025/01/13 14:27:16 by mgendrot         ###   ########.fr       */
+/*   Updated: 2025/01/14 15:15:03 by mgendrot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static void	ft_tab_arna_free(void)
+// Fonction pour libérer toute la mémoire allouée
+void	free_memory_pool(void)
 {
-	t_list	*arna;
-	t_list	*tmp;
+	t_list	**pool;
+	t_list	*next;
+	t_list	*current;
+	int		i;
 
-	arna = *ft_arnalloc_tab_line(get_arna_tad(-1));
-	if (!arna)
+	pool = *get_memory_pool();
+	if (!pool)
 		return ;
-	while (arna)
+	i = 0;
+	while (i < MEMORY_POOL_MAX)
 	{
-		tmp = arna;
-		arna = arna->next;
-		free(tmp->content);
-		tmp->content = NULL;
-		free(tmp);
-		tmp = NULL;
+		current = pool[i];
+		while (current)
+		{
+			next = current->next;
+			free(current->content);
+			free(current);
+			current = next;
+		}
+		i++;
 	}
+	free(pool);
 }
 
-void	ft_arna_tab_free(int i)
+void	*free_memory_pool_line(int index)
 {
-	get_arna_tad(i);
-	ft_tab_arna_free();
+	t_list	**pool;
+	t_list	*current;
+	t_list	*next;
+
+	pool = *get_memory_pool();
+	if (!pool)
+		return (NULL);
+	if (!pool[index])
+		return (NULL);
+	current = pool[index];
+	while (current)
+	{
+		next = current->next;
+		free(current->content);
+		free(current);
+		current = next;
+	}
+	pool[index] = create_list_node(malloc(1));
+	return (NULL);
 }
 
-void	ft_arna_tab_free_free(void)
-{
-	int	i;
-
-	i = ARNA_TAB_MAX;
-	while (i--)
-		get_arna_tad(i);
-	free(ft_arnalloc_tab__orig());
-}

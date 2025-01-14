@@ -6,7 +6,7 @@
 /*   By: mgendrot <mgendrot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/12 16:41:50 by mgendrot          #+#    #+#             */
-/*   Updated: 2025/01/13 14:51:31 by mgendrot         ###   ########.fr       */
+/*   Updated: 2025/01/14 14:59:58 by mgendrot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ char	*arn_tab_get_next_line(int fd)
 
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (0);
-	buf = (char *)ft_tab_arnalloc(sizeof(char) * (BUFFER_SIZE + 1));
+	buf = (char *)allocate_from_pool(sizeof(char) * (BUFFER_SIZE + 1));
 	if (!buf)
 		return (0);
 	line = function_name(fd, buf, backup);

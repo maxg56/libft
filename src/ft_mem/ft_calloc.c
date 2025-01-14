@@ -6,7 +6,7 @@
 /*   By: mgendrot <mgendrot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/15 15:22:08 by mgendrot          #+#    #+#             */
-/*   Updated: 2025/01/13 12:57:05 by mgendrot         ###   ########.fr       */
+/*   Updated: 2025/01/14 14:59:58 by mgendrot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,10 @@ void	*ft_arn_tab_calloc(size_t count, size_t size )
 	void	*ptr;
 
 	if (size == 0 || count == 0)
-		return (ft_tab_arnalloc(0));
+		return (allocate_from_pool(0));
 	if ((size_t)count * (size_t)size > SIZE_MAX)
 		return (NULL);
-	ptr = (void *)ft_tab_arnalloc(count * size);
+	ptr = (void *)allocate_from_pool(count * size);
 	if (!ptr)
 		return (NULL);
 	ft_bzero(ptr, (count * size));
