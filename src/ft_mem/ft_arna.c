@@ -6,7 +6,7 @@
 /*   By: mgendrot <mgendrot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/14 23:01:35 by mgendrot          #+#    #+#             */
-/*   Updated: 2024/12/15 21:56:06 by mgendrot         ###   ########.fr       */
+/*   Updated: 2025/01/27 14:24:10 by mgendrot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,10 +24,15 @@ static t_list	*ft_lstnew_malloc(void *content)
 	return (new);
 }
 
-static t_list	**ft_arnalloc_orig(void)
+static t_list	**ft_arnalloc_orig(int i)
 {
 	static t_list	*arna = NULL;
 
+	if (i == -1)
+	{
+		arna = NULL;
+		return (NULL);
+	}
 	if (arna == NULL)
 	{
 		arna = ft_lstnew_malloc(malloc(64000));
@@ -44,7 +49,7 @@ void	*ft_arnalloc( size_t saze)
 	static size_t	i = 0;
 	static size_t	saze_aloc = 64000;
 
-	arna = ft_arnalloc_orig();
+	arna = ft_arnalloc_orig(0);
 	if (saze + i > saze_aloc)
 	{
 		while (saze > saze_aloc)
@@ -62,7 +67,7 @@ void	ft_arna_free(void)
 	t_list	*arna;
 	t_list	*tmp;
 
-	arna = *ft_arnalloc_orig();
+	arna = *ft_arnalloc_orig(0);
 	while (arna)
 	{
 		tmp = arna;
@@ -72,4 +77,5 @@ void	ft_arna_free(void)
 		free(tmp);
 		tmp = NULL;
 	}
+	ft_arnalloc_orig(-1);
 }

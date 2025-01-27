@@ -6,7 +6,7 @@
 /*   By: mgendrot <mgendrot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 10:07:29 by mgendrot          #+#    #+#             */
-/*   Updated: 2025/01/08 11:09:12 by mgendrot         ###   ########.fr       */
+/*   Updated: 2025/01/27 14:25:09 by mgendrot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ char	**ft_arn_split(char const *s, char c)
 		while (*s == c && *s)
 			s++;
 		len = ft_strlen_c((char *) s, c);
-		split[i] = ft_substr(s, 0, len);
+		split[i] = ft_arn_substr(s, 0, len);
 		s += len;
 		i++;
 	}
