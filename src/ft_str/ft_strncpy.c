@@ -1,49 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   ft_strncpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mgendrot <mgendrot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/15 15:29:59 by mgendrot          #+#    #+#             */
-/*   Updated: 2025/01/30 18:23:17 by mgendrot         ###   ########.fr       */
+/*   Created: 2025/01/17 15:47:51 by mgendrot          #+#    #+#             */
+/*   Updated: 2025/01/30 18:33:13 by mgendrot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_arn_strdup(char *src)
+char	*ft_strncpy(char *dest, const char *src, size_t n)
 {
-	char	*copi;
-	int		i;
+	size_t	i;
 
 	i = 0;
-	copi = ft_arnalloc((ft_strlen(src) + 1) * sizeof(char));
-	if (!copi)
-		return (NULL);
-	while (src[i])
+	while (i < n && src[i])
 	{
-		copi[i] = src[i];
+		dest[i] = src[i];
 		i++;
 	}
-	copi[i] = '\0';
-	return (copi);
-}
-
-char	*ft_strdup(char *src)
-{
-	char	*copi;
-	int		i;
-
-	i = 0;
-	copi = malloc((ft_strlen(src) + 1) * sizeof(char));
-	if (!copi)
-		return (NULL);
-	while (src[i])
+	while (i < n)
 	{
-		copi[i] = src[i];
+		dest[i] = '\0';
 		i++;
 	}
-	copi[i] = '\0';
-	return (copi);
+	return (dest);
 }
+

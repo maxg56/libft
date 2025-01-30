@@ -6,7 +6,7 @@
 /*   By: mgendrot <mgendrot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 10:07:29 by mgendrot          #+#    #+#             */
-/*   Updated: 2025/01/14 14:59:58 by mgendrot         ###   ########.fr       */
+/*   Updated: 2025/01/30 18:23:05 by mgendrot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,33 +14,6 @@
 
 static int	count_word(char const *s, char c);
 static char	**free_arr(int i, char **arr);
-
-char	**ft_arn_tab_split(char const *s, char c)
-{
-	int		i;
-	int		len;
-	int		words;
-	char	**split;
-
-	if (!s)
-		return (NULL);
-	i = 0;
-	words = count_word(s, c);
-	split = allocate_from_pool(sizeof(char *) * (words + 1));
-	if (!split)
-		return (NULL);
-	while (i < words)
-	{
-		while (*s == c && *s)
-			s++;
-		len = ft_strlen_c((char *) s, c);
-		split[i] = ft_arn_tab_substr(s, 0, len);
-		s += len;
-		i++;
-	}
-	split[i] = NULL;
-	return (split);
-}
 
 char	**ft_arn_split(char const *s, char c)
 {

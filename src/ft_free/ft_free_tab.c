@@ -1,49 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   ft_free_tab.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mgendrot <mgendrot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/15 15:29:59 by mgendrot          #+#    #+#             */
-/*   Updated: 2025/01/30 18:23:17 by mgendrot         ###   ########.fr       */
+/*   Created: 2025/01/30 18:34:23 by mgendrot          #+#    #+#             */
+/*   Updated: 2025/01/30 18:37:54 by mgendrot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_arn_strdup(char *src)
+void	ft_free_tab(char **tab)
 {
-	char	*copi;
-	int		i;
+	int	i;
 
 	i = 0;
-	copi = ft_arnalloc((ft_strlen(src) + 1) * sizeof(char));
-	if (!copi)
-		return (NULL);
-	while (src[i])
+	if (!tab)
+		return ;
+	while (tab[i])
 	{
-		copi[i] = src[i];
+		free(tab[i]);
+		tab[i] = NULL;
 		i++;
 	}
-	copi[i] = '\0';
-	return (copi);
-}
-
-char	*ft_strdup(char *src)
-{
-	char	*copi;
-	int		i;
-
-	i = 0;
-	copi = malloc((ft_strlen(src) + 1) * sizeof(char));
-	if (!copi)
-		return (NULL);
-	while (src[i])
-	{
-		copi[i] = src[i];
-		i++;
-	}
-	copi[i] = '\0';
-	return (copi);
+	free(tab);
+	tab = NULL;
 }
