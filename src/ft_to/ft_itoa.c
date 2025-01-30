@@ -6,7 +6,7 @@
 /*   By: mgendrot <mgendrot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 10:01:48 by mgendrot          #+#    #+#             */
-/*   Updated: 2025/01/30 18:24:20 by mgendrot         ###   ########.fr       */
+/*   Updated: 2025/01/30 18:51:39 by mgendrot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,6 @@ static int	get_num_len(int n)
 	}
 	return (len);
 }
-
 
 char	*ft_arn_itoa(int n)
 {
