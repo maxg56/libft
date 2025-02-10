@@ -6,7 +6,7 @@
 /*   By: mgendrot <mgendrot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/16 13:35:42 by mgendrot          #+#    #+#             */
-/*   Updated: 2025/01/30 18:49:41 by mgendrot         ###   ########.fr       */
+/*   Updated: 2025/02/10 11:13:04 by mgendrot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ char	*ft_arn_substr(char const *s, unsigned int start, size_t len)
 	char	*str;
 
 	if (start >= ft_strlen(s))
-		return (ft_strdup(""));
+		return (ft_arn_strdup(""));
 	if (len > ft_strlen(s) - start)
 		len = ft_strlen(s) - start;
 	str = (char *)ft_arnalloc(sizeof(char) * (len + 1));
