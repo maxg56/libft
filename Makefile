@@ -117,11 +117,12 @@ fclean:	clean
 re:	fclean all
 	@printf  "$(GREEN)Cleaned and rebuilt everything for libft!$(DEF_COLOR)\n"
 
-tests:	all
-	@${CC} ${CFLAGS} tests/.tests.c tests/main.c -L . -l ft  -o ${NAMETESTS}
-	@printf -e "$(GREEN)$(BOLD)tests compiled!$(END)$(DEF_COLOR)/n"
-	./${NAMETESTS}
-	@rm -f ${NAMETESTS}
+
+tests: all
+	@$(CC) $(CFLAGS) tests/test_is_functions.c tests/test_str_functions.c tests/test_arena_functions.c tests/test_utils.c tests/comprehensive_test_main.c -L . -lft -o comprehensive_tests.out
+	@printf "$(GREEN)$(BOLD)Comprehensive tests compiled!$(END)$(DEF_COLOR)\n"
+	./comprehensive_tests.out
+	@rm -f comprehensive_tests.out test_file.txt
 
 norm:
 	@norminette $(SRCS) $(INCLUDE) | grep -v Norme -B1 || true
