@@ -56,5 +56,5 @@ char	*ft_arn_strtrim(char const *s1, char const *set)
 	while (min < max && ft_setinset(s1[max - 1], set))
 		max--;
 	len = max - min;
-	return (ft_arn_aswasubstr(s1, min, len));
+	return (ft_arn_substr(s1, min, len));
 }
