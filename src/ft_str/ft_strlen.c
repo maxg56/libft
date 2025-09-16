@@ -6,7 +6,7 @@
 /*   By: maxence <maxence@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/15 08:42:36 by mgendrot          #+#    #+#             */
-/*   Updated: 2025/09/16 22:30:13 by maxence          ###   ########.fr       */
+/*   Updated: 2025/09/16 22:47:09 by maxence          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,4 +28,10 @@ size_t	ft_strlen(const char *str)
 // 		return (0);
 // 	return (1 + ft_strlen(str + 1));
 // }
+
+// size_t	ft_strlen(const char *str)
+// {
+// 	return ((!str || *str == '\0') ? 0 : 1 + ft_strlen(str + 1));
+// }
+
 
