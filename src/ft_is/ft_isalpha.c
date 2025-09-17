@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_isalpha.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mgendrot <mgendrot@student.42.fr>          +#+  +:+       +#+        */
+/*   By: maxence <maxence@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 11:20:23 by mgendrot          #+#    #+#             */
-/*   Updated: 2024/10/22 16:00:40 by mgendrot         ###   ########.fr       */
+/*   Updated: 2025/09/17 17:39:14 by maxence          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,5 @@
 
 int	ft_isalpha(int car)
 {
-	if ((car < 'A' || car > 'z' ) || (car > 'Z' && car < 'a'))
-		return (0);
-	return (1);
+	return (!(car < 'A' || car > 'z' ) || (car > 'Z' && car < 'a'));
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_isprint.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mgendrot <mgendrot@student.42.fr>          +#+  +:+       +#+        */
+/*   By: maxence <maxence@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/15 08:40:24 by mgendrot          #+#    #+#             */
-/*   Updated: 2024/10/18 15:48:10 by mgendrot         ###   ########.fr       */
+/*   Updated: 2025/09/17 17:43:06 by maxence          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,5 @@
 
 int	ft_isprint( int car )
 {
-	if (car < ' ' || car > '~')
-		return (0);
-	return (1);
+	return (!(car < ' ' || car > '~'));
 }
