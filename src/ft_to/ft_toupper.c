@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_toupper.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mgendrot <mgendrot@student.42.fr>          +#+  +:+       +#+        */
+/*   By: maxence <maxence@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/15 10:46:46 by mgendrot          #+#    #+#             */
-/*   Updated: 2024/10/23 17:15:47 by mgendrot         ###   ########.fr       */
+/*   Updated: 2025/09/17 18:09:30 by maxence          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,5 @@
 
 int	ft_toupper(int car)
 {
-	if (car >= 'a' && car <= 'z')
-		return (car - 32);
-	else
-		return (car);
+	return (car - (car >= 'a' && car <= 'z') * 32);
 }

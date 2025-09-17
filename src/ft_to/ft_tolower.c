@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_tolower.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mgendrot <mgendrot@student.42.fr>          +#+  +:+       +#+        */
+/*   By: maxence <maxence@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/15 10:51:14 by mgendrot          #+#    #+#             */
-/*   Updated: 2024/10/23 17:15:58 by mgendrot         ###   ########.fr       */
+/*   Updated: 2025/09/17 18:09:53 by maxence          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,5 @@
 
 int	ft_tolower(int car)
 {
-	if (car >= 'A' && car <= 'Z')
-		return (car + 32);
-	else
-		return (car);
+	return (car + (car >= 'A' && car <= 'Z') * 32);
 }

@@ -3,48 +3,32 @@
 /*                                                        :::      ::::::::   */
 /*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mgendrot <mgendrot@student.42.fr>          +#+  +:+       +#+        */
+/*   By: maxence <maxence@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 10:01:48 by mgendrot          #+#    #+#             */
-/*   Updated: 2025/01/30 18:51:39 by mgendrot         ###   ########.fr       */
+/*   Updated: 2025/09/17 18:40:56 by maxence          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int	get_num_len(int n)
-{
-	int	len ;
-
-	len = 0;
-	if (n <= 0)
-		len = 1 ;
-	while (n)
-	{
-		n /= 10;
-		len++;
-	}
-	return (len);
-}
-
 char	*ft_arn_itoa(int n)
 {
 	char			*str;
 	int				len;
-	unsigned int	num;
+	long			num;
 
-	len = get_num_len(n);
-	str = (char *)ft_arnalloc(sizeof(char) * (len + 1));
+	num = n;
+	len = (n <= 0);
+	while (num && ++len)
+		num /= 10;
+	str = (char *)ft_arn_calloc(len + 1, sizeof(char));
 	if (!str)
 		return (NULL);
 	str[len] = '\0';
 	if (n < 0)
-	{
-		num = -n;
 		str[0] = '-';
-	}
-	else
-		num = n ;
+	num = (long)n * (n < 0) * -1 + n * (n >= 0);
 	while (len-- && (n >= 0 || len))
 	{
 		str[len] = (num % 10) + '0';
@@ -57,23 +41,22 @@ char	*ft_itoa(int n)
 {
 	char			*str;
 	int				len;
-	unsigned int	num;
+	long			num;
 
-	len = get_num_len(n);
-	str = (char *)malloc(sizeof(char) * (len + 1));
+	num = n;
+	len = (n <= 0);
+	while (num && ++len)
+		num /= 10;
+	str = (char *)ft_calloc(len + 1, sizeof(char));
 	if (!str)
 		return (NULL);
 	str[len] = '\0';
 	if (n < 0)
-	{
-		num = -n;
 		str[0] = '-';
-	}
-	else
-		num = n ;
+	num = (long)n * (n < 0) * -1 + n * (n >= 0);
 	while (len-- && (n >= 0 || len))
 	{
-		str[len] = (num % 10) + '0';
+		str[len] = (num % 10) + '0' ;
 		num /= 10;
 	}
 	return (str);
